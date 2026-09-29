@@ -19,6 +19,14 @@ describe('Configuración', () => {
     expect(a).toMatchObject({ port: 3000, seedDemo: true, cookieSecure: false, dataFile: 'data/db.json', adminEmail: 'admin@comparte.org' });
   });
 
+  test('sin credenciales en el entorno genera contraseñas aleatorias válidas', () => {
+    const a = loadConfig({});
+    expect(a.generatedCredentials).toBe(true);
+    expect(a.adminPassword).toMatch(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,72}$/);
+    expect(a.adminPassword).not.toBe(loadConfig({}).adminPassword);
+    expect(loadConfig({ ADMIN_PASSWORD: 'Aa123456', DEMO_PASSWORD: 'Bb123456' }).generatedCredentials).toBe(false);
+  });
+
   test('en producción exige JWT_SECRET suficientemente largo', () => {
     expect(() => loadConfig({ NODE_ENV: 'production', ADMIN_PASSWORD: 'X' })).toThrow(/JWT_SECRET/);
     expect(() => loadConfig({ NODE_ENV: 'production', JWT_SECRET: 'corto', ADMIN_PASSWORD: 'X' })).toThrow(/JWT_SECRET/);

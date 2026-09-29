@@ -26,8 +26,8 @@ jobs:
     name: 1 · Lint, pruebas unitarias y auditoría de dependencias
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
@@ -42,24 +42,26 @@ jobs:
         if: always()
         run: |
           node -e "const s=require('./coverage/coverage-summary.json').total;console.log('## Cobertura de pruebas\n\n| Métrica | % |\n|---|---|\n'+['statements','branches','functions','lines'].map(k=>'| '+k+' | '+s[k].pct+' |').join('\n'))" >> "$GITHUB_STEP_SUMMARY"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         if: always()
         with:
           name: reporte-pruebas
           path: |
             coverage/
-            reports/tests/
+            reports/pruebas/
 
   sonarqube:
     name: 2 · Análisis de calidad (SonarQube)
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with:
           name: reporte-pruebas
       - name: SonarQube Community (contenedor efímero) + scanner
@@ -69,7 +71,7 @@ jobs:
           SCANNER_NET: host
       - name: Publicar métricas en el resumen
         run: cat reports/sonarqube/sonar-report.md >> "$GITHUB_STEP_SUMMARY"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: reporte-sonarqube
           path: reports/sonarqube/
@@ -79,12 +81,12 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: docker build
         run: docker build -t $IMAGE_NAME:${{ github.sha }} .
       - name: Exportar imagen
         run: docker save $IMAGE_NAME:${{ github.sha }} | gzip > image.tar.gz
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: imagen-docker
           path: image.tar.gz
@@ -100,11 +102,11 @@ jobs:
     env:
       ADMIN_PASSWORD: ${{ secrets.STAGING_ADMIN_PASSWORD || 'Staging-Admin-2026' }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with:
           name: imagen-docker
       - name: Cargar imagen
@@ -138,7 +140,7 @@ jobs:
       - name: Logs del contenedor
         if: failure()
         run: docker logs comparte-staging
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         if: always()
         with:
           name: reporte-owasp-zap
@@ -153,7 +155,7 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with:
           name: imagen-docker
       - name: Etiquetar y subir a ghcr.io

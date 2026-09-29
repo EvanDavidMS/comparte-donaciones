@@ -6,4 +6,3 @@ data/
 .env
 .env.*
 !.env.example
-reports/tests/

@@ -5,6 +5,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const { securityHeaders, permissionsPolicy, noStore, sameOrigin, limiter } = require('./middleware/security');
 const { apiNotFound, errorHandler } = require('./middleware/errorHandler');
+const { AppError } = require('./utils/errors');
 const authRoutes = require('./routes/auth');
 const donationRoutes = require('./routes/donations');
 const requestRoutes = require('./routes/requests');
@@ -48,7 +49,16 @@ function createApp({ store, config, logger = console }) {
       },
     }),
   );
-  app.use((req, res) => res.status(404).sendFile(path.join(PUBLIC_DIR, '404.html')));
+  // El sitio estático solo admite lectura; el resto de métodos recibe un error JSON.
+  app.use((req, res, next) => {
+    if (req.method === 'GET' || req.method === 'HEAD') return next();
+    res.setHeader('Allow', 'GET, HEAD');
+    return next(new AppError(405, 'Método no permitido', 'METHOD_NOT_ALLOWED'));
+  });
+  app.use((req, res) => {
+    if (!req.accepts('html')) return res.status(404).json({ error: { code: 'NOT_FOUND', message: 'Recurso no encontrado' } });
+    return res.status(404).sendFile(path.join(PUBLIC_DIR, '404.html'));
+  });
 
   app.use(errorHandler(logger));
   return app;

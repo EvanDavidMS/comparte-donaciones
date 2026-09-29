@@ -5,8 +5,8 @@
   "main": "src/server.js",
   "private": true,
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "node --watch src/server.js",
+    "start": "node --env-file=demo.env src/server.js",
+    "dev": "node --env-file=demo.env --watch src/server.js",
     "test": "jest --coverage",
     "test:ci": "jest --coverage --ci",
     "lint": "eslint .",
@@ -48,7 +48,7 @@
       [
         "jest-junit",
         {
-          "outputDirectory": "reports/tests",
+          "outputDirectory": "reports/pruebas",
           "outputName": "junit.xml"
         }
       ]

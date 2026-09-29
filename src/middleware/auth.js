@@ -18,7 +18,7 @@ function signToken(user, config) {
 
 function extractToken(req) {
   const header = req.get('authorization');
-  if (header && header.startsWith('Bearer ')) return header.slice(7).trim();
+  if (header?.startsWith('Bearer ')) return header.slice(7).trim();
   return req.cookies?.[COOKIE_NAME] || null;
 }
 

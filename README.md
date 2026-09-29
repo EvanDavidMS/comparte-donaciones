@@ -5,7 +5,7 @@ Sistema web para gestionar donaciones de alimentos y recursos entre **empresas o
 - **Backend:** Node.js 20 + Express, autenticación **JWT** con roles.
 - **Almacenamiento:** en el propio servidor (memoria + archivo JSON con escritura atómica). **No usa base de datos ni servicios externos de pago.**
 - **Frontend:** HTML/CSS/JS sin frameworks, responsive (escritorio y móvil), modo claro/oscuro.
-- **Calidad:** Jest (129 pruebas, cobertura ≈ 99 %), ESLint, SonarQube, OWASP ZAP.
+- **Calidad:** Jest (131 pruebas, cobertura ≈ 99 %), ESLint, SonarQube, OWASP ZAP.
 - **CI/CD:** GitHub Actions con despliegue automático en un entorno de prueba (staging) basado en Docker.
 
 ## Roles
@@ -34,7 +34,7 @@ npm install
 npm start            # http://localhost:3000
 ```
 
-En modo desarrollo se crean datos de demostración:
+`npm start` carga la configuración de demostración de [`demo.env`](demo.env) (las credenciales no están en el código) y crea datos de prueba:
 
 | Cuenta | Correo | Contraseña |
 |---|---|---|
@@ -94,3 +94,16 @@ docs/           OpenAPI, seguridad e informe de cierre
 reports/        Reportes generados: pruebas, SonarQube y OWASP ZAP
 .github/        Pipeline CI/CD
 ```
+
+## Capturas
+
+| Donador | Administrador (móvil) |
+|---|---|
+| ![Panel del donador](docs/capturas/desk-donador-panel.png) | ![Solicitudes en móvil](docs/capturas/mob-admin-solicitudes.png) |
+
+## Documentación
+
+- [Seguridad: controles, OWASP ZAP y SonarQube](docs/SEGURIDAD.md)
+- [Especificación OpenAPI](docs/openapi.yaml)
+- [Informe de cierre (Word)](docs/Informe_de_Cierre_Comparte.docx)
+- [Reportes generados](reports/README.md)

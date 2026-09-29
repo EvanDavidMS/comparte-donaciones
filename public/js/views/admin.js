@@ -209,6 +209,12 @@ async function deliver(r, done) {
 }
 
 // ---------- Donaciones ----------
+function assignedCell(d) {
+  if (d.assignedTo) return d.assignedTo.name;
+  const text = d.pendingRequests ? `${d.pendingRequests} solicitud(es)` : '—';
+  return h('span', { class: 'muted' }, text);
+}
+
 export async function donations() {
   const root = h('div');
   let filter = '';
@@ -246,7 +252,7 @@ export async function donations() {
             { label: 'Cantidad', className: 'num', render: (d) => qty(d.quantity, d.unit) },
             { label: 'Caducidad', render: (d) => (d.expiresAt ? date(d.expiresAt) : h('span', { class: 'muted' }, 'No aplica')) },
             { label: 'Estado', render: (d) => statusBadge(d.status) },
-            { label: 'Asignada a', render: (d) => (d.assignedTo ? d.assignedTo.name : h('span', { class: 'muted' }, d.pendingRequests ? `${d.pendingRequests} solicitud(es)` : '—')) },
+            { label: 'Asignada a', render: assignedCell },
             {
               label: 'Acción',
               className: 'actions',
@@ -278,23 +284,30 @@ export async function donations() {
 }
 
 // ---------- Usuarios ----------
+function statusVerb(u, suspending) {
+  if (suspending) return 'Suspender';
+  return u.status === 'pendiente' ? 'Verificar' : 'Reactivar';
+}
+
+async function changeStatus(u, status, done) {
+  const suspending = status === 'suspendido';
+  const verb = statusVerb(u, suspending);
+  const who = u.organization || u.name;
+  const extra = u.role === 'beneficiario' ? ' y solicitar donaciones' : '';
+  const ok = await dialog({
+    title: `${verb} cuenta`,
+    body: suspending
+      ? `${who} no podrá iniciar sesión y sus sesiones activas se cerrarán de inmediato.`
+      : `${who} podrá usar la plataforma${extra}.`,
+    confirmLabel: verb,
+    danger: suspending,
+  });
+  if (ok) run(() => api.setUserStatus(u.id, status), `Cuenta ${suspending ? 'suspendida' : 'activada'}`, done);
+}
+
 export async function users({ refreshChrome }) {
   const root = h('div');
   let filter = 'pendiente';
-
-  async function change(u, status, done) {
-    const suspending = status === 'suspendido';
-    const verb = suspending ? 'Suspender' : u.status === 'pendiente' ? 'Verificar' : 'Reactivar';
-    const ok = await dialog({
-      title: `${verb} cuenta`,
-      body: suspending
-        ? `${u.organization || u.name} no podrá iniciar sesión y sus sesiones activas se cerrarán de inmediato.`
-        : `${u.organization || u.name} podrá usar la plataforma${u.role === 'beneficiario' ? ' y solicitar donaciones' : ''}.`,
-      confirmLabel: verb,
-      danger: suspending,
-    });
-    if (ok) run(() => api.setUserStatus(u.id, status), `Cuenta ${suspending ? 'suspendida' : 'activada'}`, done);
-  }
 
   async function draw() {
     const { users: list } = await api.users(filter ? { status: filter } : {});
@@ -343,12 +356,12 @@ export async function users({ refreshChrome }) {
                 if (u.role === 'admin') return h('span', { class: 'muted' }, 'Administrador');
                 if (u.status === 'pendiente') {
                   return [
-                    h('button', { type: 'button', class: 'btn btn-primary btn-sm', onclick: () => change(u, 'activo', done) }, 'Verificar'),
-                    h('button', { type: 'button', class: 'btn btn-ghost btn-sm', onclick: () => change(u, 'suspendido', done) }, 'Rechazar'),
+                    h('button', { type: 'button', class: 'btn btn-primary btn-sm', onclick: () => changeStatus(u, 'activo', done) }, 'Verificar'),
+                    h('button', { type: 'button', class: 'btn btn-ghost btn-sm', onclick: () => changeStatus(u, 'suspendido', done) }, 'Rechazar'),
                   ];
                 }
-                if (u.status === 'activo') return h('button', { type: 'button', class: 'btn btn-ghost btn-sm', onclick: () => change(u, 'suspendido', done) }, 'Suspender');
-                return h('button', { type: 'button', class: 'btn btn-outline btn-sm', onclick: () => change(u, 'activo', done) }, 'Reactivar');
+                if (u.status === 'activo') return h('button', { type: 'button', class: 'btn btn-ghost btn-sm', onclick: () => changeStatus(u, 'suspendido', done) }, 'Suspender');
+                return h('button', { type: 'button', class: 'btn btn-outline btn-sm', onclick: () => changeStatus(u, 'activo', done) }, 'Reactivar');
               },
             },
           ],

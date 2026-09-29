@@ -196,7 +196,7 @@ export async function available({ user }) {
             className: 'actions',
             render: (d) =>
               d.myRequestStatus
-                ? statusBadge(d.myRequestStatus === 'pendiente' ? 'pendiente' : 'aprobada')
+                ? statusBadge(d.myRequestStatus)
                 : h('button', { type: 'button', class: 'btn btn-outline btn-sm', disabled: pending, title: pending ? 'Tu cuenta aún no está verificada' : null, onclick: () => requestFlow(d) }, 'Solicitar'),
           },
         ],

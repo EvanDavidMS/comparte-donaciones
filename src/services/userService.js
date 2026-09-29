@@ -113,7 +113,9 @@ function setUserStatus(store, actor, userId, status) {
   user.status = status;
   if (status === 'suspendido') revokeSessions(store, user);
   store.scheduleSave();
-  const action = status === 'suspendido' ? 'USUARIO_SUSPENDIDO' : previous === 'pendiente' ? 'USUARIO_VERIFICADO' : 'USUARIO_REACTIVADO';
+  let action = 'USUARIO_REACTIVADO';
+  if (status === 'suspendido') action = 'USUARIO_SUSPENDIDO';
+  else if (previous === 'pendiente') action = 'USUARIO_VERIFICADO';
   audit.record(store, actor, action, `${displayName(user)} (${user.email})`);
   return publicUser(user);
 }

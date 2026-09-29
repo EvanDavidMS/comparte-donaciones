@@ -18,8 +18,9 @@ async function main() {
   const server = app.listen(config.port, () => {
     console.log(`Comparte escuchando en http://localhost:${config.port} (${config.nodeEnv})`);
     console.log(loaded ? `Datos cargados desde ${config.dataFile}` : 'Almacenamiento inicializado');
-    if (!config.isProduction) {
-      console.log(`Admin: ${config.adminEmail} | Cuentas demo (donador@ / beneficiario@comparte.org): contraseña ${config.demoPassword}`);
+    if (config.generatedCredentials && !loaded) {
+      // Solo se muestran credenciales generadas al vuelo (no hay secretos fijos en el código).
+      console.log(`Credenciales temporales → admin: ${config.adminEmail} / ${config.adminPassword} · demo: ${config.demoPassword}`);
     }
   });
 

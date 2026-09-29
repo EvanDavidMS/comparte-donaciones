@@ -52,6 +52,16 @@ describe('Cabeceras y protecciones HTTP', () => {
     expect(res.text).toContain('Página no encontrada');
   });
 
+  test('fuera de la API solo se admiten GET/HEAD y los clientes JSON reciben JSON', async () => {
+    const probe = await request(app).patch('/latest/meta-data/');
+    expect(probe.status).toBe(405);
+    expect(probe.headers.allow).toBe('GET, HEAD');
+    expect(probe.body.error.code).toBe('METHOD_NOT_ALLOWED');
+    const json = await request(app).get('/no-existe').set('Accept', 'application/json');
+    expect(json.status).toBe(404);
+    expect(json.body.error.code).toBe('NOT_FOUND');
+  });
+
   test('no permite recorrer directorios fuera de la carpeta pública', async () => {
     const res = await request(app).get('/..%2f..%2fpackage.json');
     expect(res.status).toBe(404);

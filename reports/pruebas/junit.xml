@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="131" failures="0" errors="0" time="17.084">
+  <testsuite name="Configuración" errors="0" failures="0" skipped="0" timestamp="2026-09-29T05:42:26" time="1.004" tests="17">
+    <testcase classname="Configuración en desarrollo genera un secreto aleatorio y usa valores por defecto" name="Configuración en desarrollo genera un secreto aleatorio y usa valores por defecto" time="0.007">
+    </testcase>
+    <testcase classname="Configuración sin credenciales en el entorno genera contraseñas aleatorias válidas" name="Configuración sin credenciales en el entorno genera contraseñas aleatorias válidas" time="0.002">
+    </testcase>
+    <testcase classname="Configuración en producción exige JWT_SECRET suficientemente largo" name="Configuración en producción exige JWT_SECRET suficientemente largo" time="0.024">
+    </testcase>
+    <testcase classname="Configuración en producción exige ADMIN_PASSWORD" name="Configuración en producción exige ADMIN_PASSWORD" time="0.002">
+    </testcase>
+    <testcase classname="Configuración en producción activa cookies seguras y desactiva la demo" name="Configuración en producción activa cookies seguras y desactiva la demo" time="0.001">
+    </testcase>
+    <testcase classname="Configuración respeta variables explícitas y descarta números inválidos" name="Configuración respeta variables explícitas y descarta números inválidos" time="0.001">
+    </testcase>
+    <testcase classname="Almacenamiento en servidor guarda y recupera los datos de forma atómica" name="Almacenamiento en servidor guarda y recupera los datos de forma atómica" time="0.008">
+    </testcase>
+    <testcase classname="Almacenamiento en servidor ignora registros corruptos al cargar" name="Almacenamiento en servidor ignora registros corruptos al cargar" time="0.004">
+    </testcase>
+    <testcase classname="Almacenamiento en servidor sin archivo funciona solo en memoria" name="Almacenamiento en servidor sin archivo funciona solo en memoria" time="0.002">
+    </testcase>
+    <testcase classname="Almacenamiento en servidor agrupa escrituras con scheduleSave" name="Almacenamiento en servidor agrupa escrituras con scheduleSave" time="0.048">
+    </testcase>
+    <testcase classname="Almacenamiento en servidor limita el tamaño del registro de auditoría" name="Almacenamiento en servidor limita el tamaño del registro de auditoría" time="0.004">
+    </testcase>
+    <testcase classname="Datos iniciales crea el administrador una sola vez" name="Datos iniciales crea el administrador una sola vez" time="0.069">
+    </testcase>
+    <testcase classname="Datos iniciales carga datos de demostración coherentes e idempotentes" name="Datos iniciales carga datos de demostración coherentes e idempotentes" time="0.367">
+    </testcase>
+    <testcase classname="Utilidades valida fechas reales" name="Utilidades valida fechas reales" time="0.001">
+    </testcase>
+    <testcase classname="Utilidades todayISO devuelve la fecha UTC" name="Utilidades todayISO devuelve la fecha UTC" time="0">
+    </testcase>
+    <testcase classname="Utilidades suma cantidades por unidad" name="Utilidades suma cantidades por unidad" time="0">
+    </testcase>
+    <testcase classname="Utilidades expireDonations no hace nada si no hay vencidas" name="Utilidades expireDonations no hace nada si no hay vencidas" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Cabeceras y protecciones HTTP" errors="0" failures="0" skipped="0" timestamp="2026-09-29T05:42:26" time="1.235" tests="13">
+    <testcase classname="Cabeceras y protecciones HTTP aplica una política de seguridad de contenido estricta" name="Cabeceras y protecciones HTTP aplica una política de seguridad de contenido estricta" time="0.064">
+    </testcase>
+    <testcase classname="Cabeceras y protecciones HTTP las respuestas de la API no se guardan en caché" name="Cabeceras y protecciones HTTP las respuestas de la API no se guardan en caché" time="0.014">
+    </testcase>
+    <testcase classname="Cabeceras y protecciones HTTP bloquea peticiones que modifican datos desde otro origen (CSRF)" name="Cabeceras y protecciones HTTP bloquea peticiones que modifican datos desde otro origen (CSRF)" time="0.025">
+    </testcase>
+    <testcase classname="Cabeceras y protecciones HTTP permite peticiones del mismo origen" name="Cabeceras y protecciones HTTP permite peticiones del mismo origen" time="0.082">
+    </testcase>
+    <testcase classname="Cabeceras y protecciones HTTP las rutas de API desconocidas devuelven JSON 404" name="Cabeceras y protecciones HTTP las rutas de API desconocidas devuelven JSON 404" time="0.006">
+    </testcase>
+    <testcase classname="Cabeceras y protecciones HTTP las páginas desconocidas devuelven la página 404" name="Cabeceras y protecciones HTTP las páginas desconocidas devuelven la página 404" time="0.01">
+    </testcase>
+    <testcase classname="Cabeceras y protecciones HTTP fuera de la API solo se admiten GET/HEAD y los clientes JSON reciben JSON" name="Cabeceras y protecciones HTTP fuera de la API solo se admiten GET/HEAD y los clientes JSON reciben JSON" time="0.011">
+    </testcase>
+    <testcase classname="Cabeceras y protecciones HTTP no permite recorrer directorios fuera de la carpeta pública" name="Cabeceras y protecciones HTTP no permite recorrer directorios fuera de la carpeta pública" time="0.007">
+    </testcase>
+    <testcase classname="Cabeceras y protecciones HTTP sirve la tipografía local" name="Cabeceras y protecciones HTTP sirve la tipografía local" time="0.013">
+    </testcase>
+    <testcase classname="Cabeceras y protecciones HTTP los errores de validación de un token válido no filtran información interna" name="Cabeceras y protecciones HTTP los errores de validación de un token válido no filtran información interna" time="0.089">
+    </testcase>
+    <testcase classname="Manejador de errores oculta los detalles de errores inesperados" name="Manejador de errores oculta los detalles de errores inesperados" time="0.001">
+    </testcase>
+    <testcase classname="Manejador de errores conserva los errores de negocio" name="Manejador de errores conserva los errores de negocio" time="0.002">
+    </testcase>
+    <testcase classname="Manejador de errores usa un código genérico si el estado no es conocido" name="Manejador de errores usa un código genérico si el estado no es conocido" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="Registro" errors="0" failures="0" skipped="0" timestamp="2026-09-29T05:42:26" time="3.344" tests="30">
+    <testcase classname="Registro registra un donador activo y abre sesión con cookie segura" name="Registro registra un donador activo y abre sesión con cookie segura" time="0.176">
+    </testcase>
+    <testcase classname="Registro nunca devuelve el hash de la contraseña ni datos internos" name="Registro nunca devuelve el hash de la contraseña ni datos internos" time="0.086">
+    </testcase>
+    <testcase classname="Registro las organizaciones beneficiarias quedan pendientes de verificación" name="Registro las organizaciones beneficiarias quedan pendientes de verificación" time="0.079">
+    </testcase>
+    <testcase classname="Registro exige el nombre de la organización a beneficiarios" name="Registro exige el nombre de la organización a beneficiarios" time="0.01">
+    </testcase>
+    <testcase classname="Registro impide autoasignarse el rol de administrador (escalada de privilegios)" name="Registro impide autoasignarse el rol de administrador (escalada de privilegios)" time="0.01">
+    </testcase>
+    <testcase classname="Registro rechaza campos no permitidos (asignación masiva)" name="Registro rechaza campos no permitidos (asignación masiva)" time="0.009">
+    </testcase>
+    <testcase classname="Registro rechaza contraseñas débiles (corta)" name="Registro rechaza contraseñas débiles (corta)" time="0.007">
+    </testcase>
+    <testcase classname="Registro rechaza contraseñas débiles (sin mayúscula)" name="Registro rechaza contraseñas débiles (sin mayúscula)" time="0.007">
+    </testcase>
+    <testcase classname="Registro rechaza contraseñas débiles (sin minúscula)" name="Registro rechaza contraseñas débiles (sin minúscula)" time="0.008">
+    </testcase>
+    <testcase classname="Registro rechaza contraseñas débiles (sin número)" name="Registro rechaza contraseñas débiles (sin número)" time="0.009">
+    </testcase>
+    <testcase classname="Registro rechaza correos duplicados sin importar mayúsculas" name="Registro rechaza correos duplicados sin importar mayúsculas" time="0.076">
+    </testcase>
+    <testcase classname="Registro rechaza marcado HTML en campos de texto (defensa contra XSS)" name="Registro rechaza marcado HTML en campos de texto (defensa contra XSS)" time="0.005">
+    </testcase>
+    <testcase classname="Registro rechaza tipos inesperados (inyección de objetos)" name="Registro rechaza tipos inesperados (inyección de objetos)" time="0.008">
+    </testcase>
+    <testcase classname="Inicio de sesión inicia sesión con credenciales válidas" name="Inicio de sesión inicia sesión con credenciales válidas" time="0.149">
+    </testcase>
+    <testcase classname="Inicio de sesión usa el mismo mensaje para contraseña incorrecta y correo inexistente" name="Inicio de sesión usa el mismo mensaje para contraseña incorrecta y correo inexistente" time="0.205">
+    </testcase>
+    <testcase classname="Inicio de sesión bloquea la cuenta tras 5 intentos fallidos" name="Inicio de sesión bloquea la cuenta tras 5 intentos fallidos" time="0.423">
+    </testcase>
+    <testcase classname="Inicio de sesión desbloquea la cuenta cuando vence el bloqueo" name="Inicio de sesión desbloquea la cuenta cuando vence el bloqueo" time="0.207">
+    </testcase>
+    <testcase classname="Inicio de sesión valida el formato del cuerpo" name="Inicio de sesión valida el formato del cuerpo" time="0.077">
+    </testcase>
+    <testcase classname="Sesión y token JWT /me responde con el usuario usando cabecera Bearer" name="Sesión y token JWT /me responde con el usuario usando cabecera Bearer" time="0.078">
+    </testcase>
+    <testcase classname="Sesión y token JWT /me funciona con la cookie de sesión" name="Sesión y token JWT /me funciona con la cookie de sesión" time="0.075">
+    </testcase>
+    <testcase classname="Sesión y token JWT sin token responde 401" name="Sesión y token JWT sin token responde 401" time="0.079">
+    </testcase>
+    <testcase classname="Sesión y token JWT rechaza tokens manipulados" name="Sesión y token JWT rechaza tokens manipulados" time="0.087">
+    </testcase>
+    <testcase classname="Sesión y token JWT rechaza tokens sin firma (alg=none)" name="Sesión y token JWT rechaza tokens sin firma (alg=none)" time="0.086">
+    </testcase>
+    <testcase classname="Sesión y token JWT rechaza tokens firmados con otro secreto" name="Sesión y token JWT rechaza tokens firmados con otro secreto" time="0.088">
+    </testcase>
+    <testcase classname="Sesión y token JWT rechaza tokens expirados" name="Sesión y token JWT rechaza tokens expirados" time="0.085">
+    </testcase>
+    <testcase classname="Sesión y token JWT cerrar sesión revoca el token en el servidor" name="Sesión y token JWT cerrar sesión revoca el token en el servidor" time="0.092">
+    </testcase>
+    <testcase classname="Sesión y token JWT cerrar sesión sin token también responde 204" name="Sesión y token JWT cerrar sesión sin token también responde 204" time="0.085">
+    </testcase>
+    <testcase classname="Límites de peticiones y formato limita los intentos de autenticación por IP" name="Límites de peticiones y formato limita los intentos de autenticación por IP" time="0.162">
+    </testcase>
+    <testcase classname="Límites de peticiones y formato responde 400 ante JSON mal formado" name="Límites de peticiones y formato responde 400 ante JSON mal formado" time="0.006">
+    </testcase>
+    <testcase classname="Límites de peticiones y formato responde 413 ante cuerpos demasiado grandes" name="Límites de peticiones y formato responde 413 ante cuerpos demasiado grandes" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="Estadísticas" errors="0" failures="0" skipped="0" timestamp="2026-09-29T05:42:26" time="3.892" tests="6">
+    <testcase classname="Estadísticas las métricas públicas no requieren sesión ni exponen datos personales" name="Estadísticas las métricas públicas no requieren sesión ni exponen datos personales" time="0.587">
+    </testcase>
+    <testcase classname="Estadísticas en modo demostración se informan las cuentas de prueba" name="Estadísticas en modo demostración se informan las cuentas de prueba" time="0.44">
+    </testcase>
+    <testcase classname="Estadísticas el administrador recibe el resumen global" name="Estadísticas el administrador recibe el resumen global" time="0.464">
+    </testcase>
+    <testcase classname="Estadísticas el donador recibe su impacto" name="Estadísticas el donador recibe su impacto" time="0.48">
+    </testcase>
+    <testcase classname="Estadísticas la organización recibe lo que ha recibido" name="Estadísticas la organización recibe lo que ha recibido" time="0.499">
+    </testcase>
+    <testcase classname="Estadísticas las métricas privadas requieren sesión" name="Estadísticas las métricas privadas requieren sesión" time="0.509">
+    </testcase>
+  </testsuite>
+  <testsuite name="Administración" errors="0" failures="0" skipped="0" timestamp="2026-09-29T05:42:26" time="5.769" tests="9">
+    <testcase classname="Administración lista usuarios con filtros y sin datos sensibles" name="Administración lista usuarios con filtros y sin datos sensibles" time="0.564">
+    </testcase>
+    <testcase classname="Administración el rol donor no accede a la administración" name="Administración el rol donor no accede a la administración" time="0.441">
+    </testcase>
+    <testcase classname="Administración el rol org no accede a la administración" name="Administración el rol org no accede a la administración" time="0.422">
+    </testcase>
+    <testcase classname="Administración verificar una organización le permite solicitar donaciones" name="Administración verificar una organización le permite solicitar donaciones" time="0.469">
+    </testcase>
+    <testcase classname="Administración suspender una cuenta cierra sus sesiones y bloquea el acceso" name="Administración suspender una cuenta cierra sus sesiones y bloquea el acceso" time="0.671">
+    </testcase>
+    <testcase classname="Administración no permite modificar cuentas administradoras" name="Administración no permite modificar cuentas administradoras" time="0.486">
+    </testcase>
+    <testcase classname="Administración valida el estado y la existencia del usuario" name="Administración valida el estado y la existencia del usuario" time="0.477">
+    </testcase>
+    <testcase classname="Administración registra las acciones en la auditoría" name="Administración registra las acciones en la auditoría" time="0.473">
+    </testcase>
+    <testcase classname="Administración registra en auditoría el bloqueo por intentos fallidos" name="Administración registra en auditoría el bloqueo por intentos fallidos" time="0.841">
+    </testcase>
+  </testsuite>
+  <testsuite name="Solicitudes de donación" errors="0" failures="0" skipped="0" timestamp="2026-09-29T05:42:26" time="12.113" tests="22">
+    <testcase classname="Solicitudes de donación creación una organización verificada solicita una donación" name="Solicitudes de donación creación una organización verificada solicita una donación" time="0.536">
+    </testcase>
+    <testcase classname="Solicitudes de donación creación el mensaje es opcional" name="Solicitudes de donación creación el mensaje es opcional" time="0.424">
+    </testcase>
+    <testcase classname="Solicitudes de donación creación una organización sin verificar no puede solicitar" name="Solicitudes de donación creación una organización sin verificar no puede solicitar" time="0.422">
+    </testcase>
+    <testcase classname="Solicitudes de donación creación los donadores no pueden solicitar" name="Solicitudes de donación creación los donadores no pueden solicitar" time="0.449">
+    </testcase>
+    <testcase classname="Solicitudes de donación creación no permite solicitudes duplicadas activas" name="Solicitudes de donación creación no permite solicitudes duplicadas activas" time="0.493">
+    </testcase>
+    <testcase classname="Solicitudes de donación creación valida el identificador de la donación" name="Solicitudes de donación creación valida el identificador de la donación" time="0.496">
+    </testcase>
+    <testcase classname="Solicitudes de donación creación no se puede solicitar una donación que ya no está disponible" name="Solicitudes de donación creación no se puede solicitar una donación que ya no está disponible" time="0.476">
+    </testcase>
+    <testcase classname="Solicitudes de donación creación limita a 10 solicitudes pendientes por organización" name="Solicitudes de donación creación limita a 10 solicitudes pendientes por organización" time="0.543">
+    </testcase>
+    <testcase classname="Solicitudes de donación consulta la organización ve sus solicitudes y el catálogo marca lo ya solicitado" name="Solicitudes de donación consulta la organización ve sus solicitudes y el catálogo marca lo ya solicitado" time="0.484">
+    </testcase>
+    <testcase classname="Solicitudes de donación consulta el donador ve las solicitudes de sus donaciones y otro donador no" name="Solicitudes de donación consulta el donador ve las solicitudes de sus donaciones y otro donador no" time="0.48">
+    </testcase>
+    <testcase classname="Solicitudes de donación consulta el administrador ve todo con datos de contacto y puede filtrar" name="Solicitudes de donación consulta el administrador ve todo con datos de contacto y puede filtrar" time="0.494">
+    </testcase>
+    <testcase classname="Solicitudes de donación consulta otra organización no ve solicitudes ajenas" name="Solicitudes de donación consulta otra organización no ve solicitudes ajenas" time="0.483">
+    </testcase>
+    <testcase classname="Solicitudes de donación flujo de aprobación aprobar reserva la donación y rechaza a las demás organizaciones" name="Solicitudes de donación flujo de aprobación aprobar reserva la donación y rechaza a las demás organizaciones" time="0.526">
+    </testcase>
+    <testcase classname="Solicitudes de donación flujo de aprobación solo el administrador aprueba o rechaza" name="Solicitudes de donación flujo de aprobación solo el administrador aprueba o rechaza" time="0.492">
+    </testcase>
+    <testcase classname="Solicitudes de donación flujo de aprobación no se aprueba dos veces ni una solicitud de donación reservada" name="Solicitudes de donación flujo de aprobación no se aprueba dos veces ni una solicitud de donación reservada" time="0.498">
+    </testcase>
+    <testcase classname="Solicitudes de donación flujo de aprobación no se aprueba si la organización fue suspendida" name="Solicitudes de donación flujo de aprobación no se aprueba si la organización fue suspendida" time="0.493">
+    </testcase>
+    <testcase classname="Solicitudes de donación flujo de aprobación rechazar exige un motivo" name="Solicitudes de donación flujo de aprobación rechazar exige un motivo" time="0.53">
+    </testcase>
+    <testcase classname="Solicitudes de donación flujo de aprobación la organización cancela su solicitud pendiente, pero no la de otros" name="Solicitudes de donación flujo de aprobación la organización cancela su solicitud pendiente, pero no la de otros" time="0.57">
+    </testcase>
+    <testcase classname="Solicitudes de donación flujo de aprobación la organización confirma la recepción y la donación queda entregada" name="Solicitudes de donación flujo de aprobación la organización confirma la recepción y la donación queda entregada" time="0.518">
+    </testcase>
+    <testcase classname="Solicitudes de donación flujo de aprobación el administrador también puede registrar la entrega" name="Solicitudes de donación flujo de aprobación el administrador también puede registrar la entrega" time="0.601">
+    </testcase>
+    <testcase classname="Solicitudes de donación flujo de aprobación revocar una asignación libera la donación" name="Solicitudes de donación flujo de aprobación revocar una asignación libera la donación" time="0.588">
+    </testcase>
+    <testcase classname="Solicitudes de donación flujo de aprobación las solicitudes inexistentes responden 404" name="Solicitudes de donación flujo de aprobación las solicitudes inexistentes responden 404" time="0.582">
+    </testcase>
+  </testsuite>
+  <testsuite name="Donaciones" errors="0" failures="0" skipped="0" timestamp="2026-09-29T05:42:26" time="16.404" tests="34">
+    <testcase classname="Donaciones publicación un donador publica una donación disponible" name="Donaciones publicación un donador publica una donación disponible" time="0.53">
+    </testcase>
+    <testcase classname="Donaciones publicación las categorías no alimentarias no requieren caducidad" name="Donaciones publicación las categorías no alimentarias no requieren caducidad" time="0.435">
+    </testcase>
+    <testcase classname="Donaciones publicación el rol beneficiario no puede publicar donaciones" name="Donaciones publicación el rol beneficiario no puede publicar donaciones" time="0.417">
+    </testcase>
+    <testcase classname="Donaciones publicación el rol admin no puede publicar donaciones" name="Donaciones publicación el rol admin no puede publicar donaciones" time="0.447">
+    </testcase>
+    <testcase classname="Donaciones publicación valida la entrada: alimentos sin caducidad" name="Donaciones publicación valida la entrada: alimentos sin caducidad" time="0.482">
+    </testcase>
+    <testcase classname="Donaciones publicación valida la entrada: fecha pasada" name="Donaciones publicación valida la entrada: fecha pasada" time="0.488">
+    </testcase>
+    <testcase classname="Donaciones publicación valida la entrada: fecha de hoy" name="Donaciones publicación valida la entrada: fecha de hoy" time="0.485">
+    </testcase>
+    <testcase classname="Donaciones publicación valida la entrada: fecha inexistente" name="Donaciones publicación valida la entrada: fecha inexistente" time="0.476">
+    </testcase>
+    <testcase classname="Donaciones publicación valida la entrada: formato de fecha" name="Donaciones publicación valida la entrada: formato de fecha" time="0.48">
+    </testcase>
+    <testcase classname="Donaciones publicación valida la entrada: cantidad como texto" name="Donaciones publicación valida la entrada: cantidad como texto" time="0.455">
+    </testcase>
+    <testcase classname="Donaciones publicación valida la entrada: cantidad negativa" name="Donaciones publicación valida la entrada: cantidad negativa" time="0.47">
+    </testcase>
+    <testcase classname="Donaciones publicación valida la entrada: cantidad decimal" name="Donaciones publicación valida la entrada: cantidad decimal" time="0.496">
+    </testcase>
+    <testcase classname="Donaciones publicación valida la entrada: cantidad excesiva" name="Donaciones publicación valida la entrada: cantidad excesiva" time="0.465">
+    </testcase>
+    <testcase classname="Donaciones publicación valida la entrada: categoría inválida" name="Donaciones publicación valida la entrada: categoría inválida" time="0.402">
+    </testcase>
+    <testcase classname="Donaciones publicación valida la entrada: unidad inválida" name="Donaciones publicación valida la entrada: unidad inválida" time="0.413">
+    </testcase>
+    <testcase classname="Donaciones publicación valida la entrada: título con HTML" name="Donaciones publicación valida la entrada: título con HTML" time="0.407">
+    </testcase>
+    <testcase classname="Donaciones publicación valida la entrada: título vacío" name="Donaciones publicación valida la entrada: título vacío" time="0.413">
+    </testcase>
+    <testcase classname="Donaciones publicación no acepta campos extra como el estado o el donante" name="Donaciones publicación no acepta campos extra como el estado o el donante" time="0.422">
+    </testcase>
+    <testcase classname="Donaciones publicación los datos con apariencia de inyección SQL se guardan como texto literal" name="Donaciones publicación los datos con apariencia de inyección SQL se guardan como texto literal" time="0.499">
+    </testcase>
+    <testcase classname="Donaciones consulta cada donador ve solo sus donaciones" name="Donaciones consulta cada donador ve solo sus donaciones" time="0.46">
+    </testcase>
+    <testcase classname="Donaciones consulta las organizaciones ven solo donaciones disponibles y sin correos del donante" name="Donaciones consulta las organizaciones ven solo donaciones disponibles y sin correos del donante" time="0.47">
+    </testcase>
+    <testcase classname="Donaciones consulta el administrador ve todas con el correo del donante" name="Donaciones consulta el administrador ve todas con el correo del donante" time="0.507">
+    </testcase>
+    <testcase classname="Donaciones consulta filtra por texto, categoría y estado" name="Donaciones consulta filtra por texto, categoría y estado" time="0.499">
+    </testcase>
+    <testcase classname="Donaciones consulta rechaza parámetros de consulta duplicados o inválidos" name="Donaciones consulta rechaza parámetros de consulta duplicados o inválidos" time="0.51">
+    </testcase>
+    <testcase classname="Donaciones consulta obtiene el detalle respetando permisos" name="Donaciones consulta obtiene el detalle respetando permisos" time="0.456">
+    </testcase>
+    <testcase classname="Donaciones consulta una organización puede ver una donación que solicitó aunque ya no esté disponible" name="Donaciones consulta una organización puede ver una donación que solicitó aunque ya no esté disponible" time="0.453">
+    </testcase>
+    <testcase classname="Donaciones consulta identificadores inválidos o inexistentes responden 404" name="Donaciones consulta identificadores inválidos o inexistentes responden 404" time="0.433">
+    </testcase>
+    <testcase classname="Donaciones consulta requiere autenticación" name="Donaciones consulta requiere autenticación" time="0.453">
+    </testcase>
+    <testcase classname="Donaciones cancelación y vencimiento el donador cancela su donación y se rechazan las solicitudes pendientes" name="Donaciones cancelación y vencimiento el donador cancela su donación y se rechazan las solicitudes pendientes" time="0.426">
+    </testcase>
+    <testcase classname="Donaciones cancelación y vencimiento otro donador no puede cancelarla" name="Donaciones cancelación y vencimiento otro donador no puede cancelarla" time="0.412">
+    </testcase>
+    <testcase classname="Donaciones cancelación y vencimiento una organización no puede cancelar donaciones" name="Donaciones cancelación y vencimiento una organización no puede cancelar donaciones" time="0.409">
+    </testcase>
+    <testcase classname="Donaciones cancelación y vencimiento el administrador puede cancelarla y no se cancela dos veces" name="Donaciones cancelación y vencimiento el administrador puede cancelarla y no se cancela dos veces" time="0.435">
+    </testcase>
+    <testcase classname="Donaciones cancelación y vencimiento las donaciones con fecha vencida pasan a &quot;vencida&quot; y rechazan solicitudes" name="Donaciones cancelación y vencimiento las donaciones con fecha vencida pasan a &quot;vencida&quot; y rechazan solicitudes" time="0.432">
+    </testcase>
+    <testcase classname="Donaciones cancelación y vencimiento una fecha futura no vence la donación" name="Donaciones cancelación y vencimiento una fecha futura no vence la donación" time="0.436">
+    </testcase>
+  </testsuite>
+</testsuites>

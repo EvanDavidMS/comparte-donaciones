@@ -1,4 +1,4 @@
-// Utilidades de interfaz. Todo el contenido dinámico se inserta como texto
+// Utilidades de interfaz. El contenido dinámico se inserta como texto
 // (textContent / createTextNode): nunca se usa innerHTML con datos del usuario,
 // lo que evita XSS aunque un dato malicioso llegara al servidor.
 

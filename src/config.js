@@ -21,10 +21,13 @@ function loadConfig(env = process.env) {
     jwtSecret = crypto.randomBytes(48).toString('hex');
   }
 
-  const adminPassword = env.ADMIN_PASSWORD || (isProduction ? null : 'Admin12345');
-  if (!adminPassword) {
+  // Las credenciales nunca se escriben en el código: llegan por entorno
+  // (en local, desde demo.env) o se generan aleatoriamente en desarrollo.
+  if (isProduction && !env.ADMIN_PASSWORD) {
     throw new Error('ADMIN_PASSWORD es obligatorio en producción');
   }
+  const adminPassword = env.ADMIN_PASSWORD || randomPassword();
+  const demoPassword = env.DEMO_PASSWORD || randomPassword();
 
   return {
     nodeEnv,
@@ -38,10 +41,16 @@ function loadConfig(env = process.env) {
     adminEmail: (env.ADMIN_EMAIL || 'admin@comparte.org').toLowerCase(),
     adminPassword,
     seedDemo: env.SEED_DEMO ? env.SEED_DEMO === 'true' : !isProduction,
-    demoPassword: env.DEMO_PASSWORD || 'Demo12345',
+    demoPassword,
+    generatedCredentials: !env.ADMIN_PASSWORD || !env.DEMO_PASSWORD,
     authRateLimit: toInt(env.AUTH_RATE_LIMIT, 20),
     apiRateLimit: toInt(env.API_RATE_LIMIT, 600),
   };
+}
+
+/** Contraseña temporal que cumple la política (mayúscula, minúscula y número). */
+function randomPassword() {
+  return `Tmp${crypto.randomBytes(6).toString('hex')}X9`;
 }
 
 function toInt(value, fallback) {

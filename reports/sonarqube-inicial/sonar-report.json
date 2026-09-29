@@ -1,0 +1,466 @@
+{
+  "values": {
+    "coverage": "98.4",
+    "complexity": "724",
+    "reliability_rating": "1.0",
+    "code_smells": "8",
+    "duplicated_lines_density": "0.0",
+    "functions": "387",
+    "security_rating": "3.0",
+    "sqale_debt_ratio": "0.0",
+    "comment_lines_density": "2.5",
+    "security_hotspots": "0",
+    "sqale_index": "40",
+    "sqale_rating": "1.0",
+    "bugs": "0",
+    "branch_coverage": "96.9",
+    "cognitive_complexity": "371",
+    "ncloc": "4031",
+    "files": "31",
+    "vulnerabilities": "1",
+    "line_coverage": "99.1"
+  },
+  "gate": {
+    "status": "OK",
+    "conditions": [
+      {
+        "status": "OK",
+        "metricKey": "new_coverage",
+        "comparator": "LT",
+        "errorThreshold": "80",
+        "actualValue": "100.0"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_duplicated_lines_density",
+        "comparator": "GT",
+        "errorThreshold": "3",
+        "actualValue": "0.0"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_violations",
+        "comparator": "GT",
+        "errorThreshold": "0",
+        "actualValue": "0"
+      }
+    ],
+    "ignoredConditions": false,
+    "period": {
+      "mode": "PREVIOUS_VERSION",
+      "date": "2026-09-29T05:28:12+0000"
+    },
+    "caycStatus": "compliant"
+  },
+  "issues": [
+    {
+      "key": "ea97af64-2ac7-4721-bf67-2b749b17df78",
+      "rule": "Web:S6819",
+      "severity": "MAJOR",
+      "component": "comparte-donaciones:public/index.html",
+      "project": "comparte-donaciones",
+      "line": 16,
+      "hash": "230c9d1d7594a0df45f51c177f8bfe09",
+      "textRange": {
+        "startLine": 16,
+        "endLine": 16,
+        "startOffset": 4,
+        "endOffset": 69
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Use <output> instead of the status role to ensure accessibility across all devices.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "evandavidms@gmail.com",
+      "tags": [
+        "accessibility"
+      ],
+      "creationDate": "2026-09-29T05:24:25+0000",
+      "updateDate": "2026-09-29T05:28:12+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "e8171536-62f5-49f2-bb81-9fa94d0b0959",
+      "rule": "javascript:S3358",
+      "severity": "MAJOR",
+      "component": "comparte-donaciones:public/js/views/admin.js",
+      "project": "comparte-donaciones",
+      "line": 249,
+      "hash": "ce4a1d8b06289957103bab2cf23f3140",
+      "textRange": {
+        "startLine": 249,
+        "endLine": 249,
+        "startOffset": 116,
+        "endOffset": 178
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Extract this nested ternary operation into an independent statement.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "evandavidms@gmail.com",
+      "tags": [
+        "editable-source",
+        "confusing"
+      ],
+      "creationDate": "2026-09-29T05:24:25+0000",
+      "updateDate": "2026-09-29T05:28:12+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "8efa0da6-2641-49cb-85df-c4a6263282d1",
+      "rule": "javascript:S7721",
+      "severity": "MAJOR",
+      "component": "comparte-donaciones:public/js/views/admin.js",
+      "project": "comparte-donaciones",
+      "line": 285,
+      "hash": "b4fec2ae817ff7548162bb0839438c98",
+      "textRange": {
+        "startLine": 285,
+        "endLine": 285,
+        "startOffset": 2,
+        "endOffset": 23
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Move async function 'change' to the outer scope.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "evandavidms@gmail.com",
+      "tags": [
+        "performance",
+        "optimization",
+        "editable-source",
+        "javascript"
+      ],
+      "creationDate": "2026-09-29T05:24:25+0000",
+      "updateDate": "2026-09-29T05:28:12+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "EFFICIENT",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "199b68c6-c4a3-45a3-9e82-d7cc1ddef68e",
+      "rule": "javascript:S3358",
+      "severity": "MAJOR",
+      "component": "comparte-donaciones:public/js/views/admin.js",
+      "project": "comparte-donaciones",
+      "line": 287,
+      "hash": "a0a29b6f5893de180e93a323dfdc9f16",
+      "textRange": {
+        "startLine": 287,
+        "endLine": 287,
+        "startOffset": 44,
+        "endOffset": 96
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Extract this nested ternary operation into an independent statement.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "evandavidms@gmail.com",
+      "tags": [
+        "editable-source",
+        "confusing"
+      ],
+      "creationDate": "2026-09-29T05:24:25+0000",
+      "updateDate": "2026-09-29T05:28:12+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "0566eab4-93fc-4f15-96cc-d2cfd6972b3a",
+      "rule": "javascript:S3358",
+      "severity": "MAJOR",
+      "component": "comparte-donaciones:public/js/views/admin.js",
+      "project": "comparte-donaciones",
+      "line": 292,
+      "hash": "5cfa65dbc6c91de91879f3c202c9cc92",
+      "textRange": {
+        "startLine": 292,
+        "endLine": 292,
+        "startOffset": 65,
+        "endOffset": 123
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Extract this nested ternary operation into an independent statement.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "evandavidms@gmail.com",
+      "tags": [
+        "editable-source",
+        "confusing"
+      ],
+      "creationDate": "2026-09-29T05:24:25+0000",
+      "updateDate": "2026-09-29T05:28:12+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "3f1ab1e7-e348-433d-ba9d-d79823ffcece",
+      "rule": "javascript:S3358",
+      "severity": "MAJOR",
+      "component": "comparte-donaciones:public/js/views/beneficiary.js",
+      "project": "comparte-donaciones",
+      "line": 199,
+      "hash": "f4908b117e6a54b8c4df8714a22a5fb6",
+      "textRange": {
+        "startLine": 199,
+        "endLine": 199,
+        "startOffset": 30,
+        "endOffset": 90
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Extract this nested ternary operation into an independent statement.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "evandavidms@gmail.com",
+      "tags": [
+        "editable-source",
+        "confusing"
+      ],
+      "creationDate": "2026-09-29T05:24:25+0000",
+      "updateDate": "2026-09-29T05:28:12+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "37493e55-2304-430e-8a7c-a2c214230ad7",
+      "rule": "javascript:S2068",
+      "severity": "MAJOR",
+      "component": "comparte-donaciones:src/config.js",
+      "project": "comparte-donaciones",
+      "line": 41,
+      "hash": "93fce8f2cff50d3a6c14e67613c73539",
+      "textRange": {
+        "startLine": 41,
+        "endLine": 41,
+        "startOffset": 18,
+        "endOffset": 50
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Review this potentially hard-coded password.",
+      "effort": "30min",
+      "debt": "30min",
+      "author": "evandavidms@gmail.com",
+      "tags": [
+        "cwe",
+        "secret",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-09-29T05:24:25+0000",
+      "updateDate": "2026-09-29T05:28:12+0000",
+      "type": "VULNERABILITY",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "eb743cdc-74d3-49e2-8af8-067ddb057a26",
+      "rule": "javascript:S6582",
+      "severity": "MINOR",
+      "component": "comparte-donaciones:src/middleware/auth.js",
+      "project": "comparte-donaciones",
+      "line": 21,
+      "hash": "eb013e1046e4ecbbd39404f0a99cf731",
+      "textRange": {
+        "startLine": 21,
+        "endLine": 21,
+        "startOffset": 6,
+        "endOffset": 44
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Prefer using an optional chain expression instead, as it's more concise and easier to read.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "evandavidms@gmail.com",
+      "tags": [
+        "editable-source",
+        "type-dependent",
+        "es2020"
+      ],
+      "creationDate": "2026-09-29T05:24:25+0000",
+      "updateDate": "2026-09-29T05:28:12+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "f83e3f45-a9cc-4a5c-84f6-7c6b1115189c",
+      "rule": "javascript:S3358",
+      "severity": "MAJOR",
+      "component": "comparte-donaciones:src/services/userService.js",
+      "project": "comparte-donaciones",
+      "line": 116,
+      "hash": "d7ea58b2ad8c6de524d97b20462ac376",
+      "textRange": {
+        "startLine": 116,
+        "endLine": 116,
+        "startOffset": 66,
+        "endOffset": 136
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Extract this nested ternary operation into an independent statement.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "evandavidms@gmail.com",
+      "tags": [
+        "editable-source",
+        "confusing"
+      ],
+      "creationDate": "2026-09-29T05:24:25+0000",
+      "updateDate": "2026-09-29T05:28:12+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    }
+  ],
+  "hotspots": []
+}
