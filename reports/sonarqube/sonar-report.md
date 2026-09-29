@@ -1,6 +1,6 @@
 # Reporte de calidad — SonarQube
 
-Proyecto: `comparte-donaciones` · Fecha: 2026-09-29T05:40:23.246Z
+Proyecto: `comparte-donaciones` · Fecha: 2026-09-29T05:50:17.169Z
 
 **Quality Gate: APROBADO ✅**
 

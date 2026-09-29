@@ -41,7 +41,7 @@ SRC="$PWD"
 USER_OPT=(--user "$(id -u):$(id -g)")
 if command -v cygpath >/dev/null 2>&1; then SRC="$(cygpath -w "$PWD")"; USER_OPT=(); fi
 MSYS_NO_PATHCONV=1 docker run --rm "${USER_OPT[@]}" --network "$SCANNER_NET" -v "$SRC:/usr/src" \
-  -e SONAR_HOST_URL="$SCANNER_HOST" -e SONAR_TOKEN="$TOKEN" sonarsource/sonar-scanner-cli \
+  -e SONAR_HOST_URL="$SCANNER_HOST" -e SONAR_TOKEN="$TOKEN" -e SONAR_USER_HOME=/usr/src/.sonar sonarsource/sonar-scanner-cli \
   -Dsonar.working.directory=/usr/src/.scannerwork
 
 TASK_ID=$(sed -n 's/^ceTaskId=//p' .scannerwork/report-task.txt)
