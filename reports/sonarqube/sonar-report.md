@@ -1,6 +1,6 @@
 # Reporte de calidad — SonarQube
 
-Proyecto: `conecta-mas-donaciones` · Fecha: 2026-09-29T06:10:44.580Z
+Proyecto: `conecta-mas-donaciones` · Fecha: 2026-09-29T07:17:31.734Z
 
 **Quality Gate: APROBADO ✅**
 

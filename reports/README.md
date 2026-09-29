@@ -7,5 +7,6 @@
 | `sonarqube/` | Análisis final de SonarQube (`sonar-report.md` legible y `.json` con el detalle). |
 | `zap-inicial/` | Primer escaneo OWASP ZAP: baseline y API activa (HTML, JSON y Markdown). |
 | `zap/` | Escaneo OWASP ZAP final y `zap-summary.md`. |
+| `../docs/capturas/evidencia/` | Capturas reales: salida de Jest, cobertura y tablero de SonarQube. |
 
 Estos reportes se regeneran automáticamente en cada ejecución del pipeline (pestaña *Actions* → artefactos `reporte-pruebas`, `reporte-sonarqube` y `reporte-owasp-zap`). El análisis de hallazgos y sus correcciones está en [`../docs/SEGURIDAD.md`](../docs/SEGURIDAD.md).
