@@ -1,0 +1,301 @@
+openapi: 3.0.3
+info:
+  title: Comparte API
+  version: 1.0.0
+  description: >
+    API REST de Comparte, plataforma de donaciones de alimentos y recursos entre
+    donadores (empresas o particulares) y organizaciones sociales beneficiarias.
+    Autenticación mediante JWT (cabecera Bearer o cookie httpOnly `comparte_token`).
+servers:
+  - url: http://host.docker.internal:3000
+tags:
+  - name: Autenticación
+  - name: Donaciones
+  - name: Solicitudes
+  - name: Administración
+  - name: Estadísticas
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema: { type: string, format: uuid, example: 3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60 }
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code: { type: string, example: VALIDATION_ERROR }
+            message: { type: string }
+            details:
+              type: array
+              items: { type: object, properties: { field: { type: string }, message: { type: string } } }
+    User:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        email: { type: string, format: email }
+        role: { type: string, enum: [admin, donador, beneficiario] }
+        organization: { type: string }
+        status: { type: string, enum: [activo, pendiente, suspendido] }
+        createdAt: { type: string, format: date-time }
+    Session:
+      type: object
+      properties:
+        user: { $ref: '#/components/schemas/User' }
+        token: { type: string }
+        expiresIn: { type: integer, example: 7200 }
+    DonationInput:
+      type: object
+      required: [title, category, quantity, unit, location]
+      additionalProperties: false
+      properties:
+        title: { type: string, minLength: 3, maxLength: 80, example: Arroz en costales }
+        category: { type: string, enum: [alimentos, ropa, higiene, utiles, hogar, otros] }
+        quantity: { type: integer, minimum: 1, maximum: 100000, example: 50 }
+        unit: { type: string, enum: [kg, litros, unidades, cajas, paquetes] }
+        expiresAt: { type: string, format: date, example: '2027-12-31', description: Obligatoria para alimentos. }
+        location: { type: string, maxLength: 80, example: Monterrey }
+        description: { type: string, maxLength: 500 }
+    Donation:
+      allOf:
+        - $ref: '#/components/schemas/DonationInput'
+        - type: object
+          properties:
+            id: { type: string, format: uuid }
+            status: { type: string, enum: [disponible, reservada, entregada, cancelada, vencida] }
+            donor: { type: object, properties: { name: { type: string } } }
+    Request:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        status: { type: string, enum: [pendiente, aprobada, rechazada, entregada, cancelada] }
+        message: { type: string }
+        reason: { type: string }
+        donation: { $ref: '#/components/schemas/Donation' }
+    Reason:
+      type: object
+      required: [reason]
+      additionalProperties: false
+      properties:
+        reason: { type: string, minLength: 3, maxLength: 200, example: Fuera de la zona de cobertura }
+  responses:
+    Error:
+      description: Error
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+security:
+  - bearerAuth: []
+paths:
+  /api/health:
+    get:
+      security: []
+      summary: Estado del servicio
+      responses:
+        '200': { description: OK }
+  /api/auth/register:
+    post:
+      tags: [Autenticación]
+      security: []
+      summary: Registro público (solo donador o beneficiario)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, email, password, role]
+              additionalProperties: false
+              properties:
+                name: { type: string, example: Ana Pérez }
+                email: { type: string, format: email, example: ana@example.com }
+                password: { type: string, example: Segura123 }
+                role: { type: string, enum: [donador, beneficiario] }
+                organization: { type: string, example: Comedor Esperanza }
+      responses:
+        '201': { description: Cuenta creada, content: { application/json: { schema: { $ref: '#/components/schemas/Session' } } } }
+        '400': { $ref: '#/components/responses/Error' }
+        '409': { $ref: '#/components/responses/Error' }
+  /api/auth/login:
+    post:
+      tags: [Autenticación]
+      security: []
+      summary: Inicio de sesión (emite JWT)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email: { type: string, example: donador@comparte.org }
+                password: { type: string, example: Demo12345 }
+      responses:
+        '200': { description: Sesión iniciada, content: { application/json: { schema: { $ref: '#/components/schemas/Session' } } } }
+        '401': { $ref: '#/components/responses/Error' }
+        '423': { $ref: '#/components/responses/Error' }
+        '429': { $ref: '#/components/responses/Error' }
+  /api/auth/logout:
+    post:
+      tags: [Autenticación]
+      summary: Cierra la sesión y revoca el token
+      responses:
+        '204': { description: Sesión cerrada }
+  /api/auth/me:
+    get:
+      tags: [Autenticación]
+      summary: Usuario autenticado
+      responses:
+        '200': { description: OK }
+        '401': { $ref: '#/components/responses/Error' }
+  /api/donations:
+    get:
+      tags: [Donaciones]
+      summary: Lista donaciones visibles según el rol
+      parameters:
+        - { name: status, in: query, schema: { type: string, enum: [disponible, reservada, entregada, cancelada, vencida] } }
+        - { name: category, in: query, schema: { type: string, enum: [alimentos, ropa, higiene, utiles, hogar, otros] } }
+        - { name: q, in: query, schema: { type: string, maxLength: 60, example: arroz } }
+      responses:
+        '200': { description: OK }
+    post:
+      tags: [Donaciones]
+      summary: Publica una donación (rol donador)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/DonationInput' }
+      responses:
+        '201': { description: Creada }
+        '400': { $ref: '#/components/responses/Error' }
+        '403': { $ref: '#/components/responses/Error' }
+  /api/donations/{id}:
+    get:
+      tags: [Donaciones]
+      summary: Detalle de una donación
+      parameters: [{ $ref: '#/components/parameters/Id' }]
+      responses:
+        '200': { description: OK }
+        '404': { $ref: '#/components/responses/Error' }
+  /api/donations/{id}/cancel:
+    patch:
+      tags: [Donaciones]
+      summary: Cancela una donación disponible (donador dueño o admin)
+      parameters: [{ $ref: '#/components/parameters/Id' }]
+      responses:
+        '200': { description: OK }
+        '409': { $ref: '#/components/responses/Error' }
+  /api/requests:
+    get:
+      tags: [Solicitudes]
+      summary: Lista solicitudes visibles según el rol
+      parameters:
+        - { name: status, in: query, schema: { type: string, enum: [pendiente, aprobada, rechazada, entregada, cancelada] } }
+        - { name: donationId, in: query, schema: { type: string, format: uuid } }
+      responses:
+        '200': { description: OK }
+    post:
+      tags: [Solicitudes]
+      summary: Solicita una donación (beneficiario verificado)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [donationId]
+              additionalProperties: false
+              properties:
+                donationId: { type: string, format: uuid }
+                message: { type: string, maxLength: 300 }
+      responses:
+        '201': { description: Creada }
+        '403': { $ref: '#/components/responses/Error' }
+        '409': { $ref: '#/components/responses/Error' }
+  /api/requests/{id}/cancel:
+    patch:
+      tags: [Solicitudes]
+      summary: Cancela una solicitud pendiente propia
+      parameters: [{ $ref: '#/components/parameters/Id' }]
+      responses: { '200': { description: OK } }
+  /api/requests/{id}/approve:
+    patch:
+      tags: [Solicitudes]
+      summary: Aprueba una solicitud (admin)
+      parameters: [{ $ref: '#/components/parameters/Id' }]
+      responses: { '200': { description: OK } }
+  /api/requests/{id}/reject:
+    patch:
+      tags: [Solicitudes]
+      summary: Rechaza una solicitud con motivo (admin)
+      parameters: [{ $ref: '#/components/parameters/Id' }]
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/Reason' } } }
+      responses: { '200': { description: OK } }
+  /api/requests/{id}/revoke:
+    patch:
+      tags: [Solicitudes]
+      summary: Revoca una asignación aprobada (admin)
+      parameters: [{ $ref: '#/components/parameters/Id' }]
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/Reason' } } }
+      responses: { '200': { description: OK } }
+  /api/requests/{id}/confirm:
+    patch:
+      tags: [Solicitudes]
+      summary: Confirma la entrega (beneficiario asignado o admin)
+      parameters: [{ $ref: '#/components/parameters/Id' }]
+      responses: { '200': { description: OK } }
+  /api/admin/users:
+    get:
+      tags: [Administración]
+      summary: Lista usuarios (admin)
+      parameters:
+        - { name: role, in: query, schema: { type: string, enum: [admin, donador, beneficiario] } }
+        - { name: status, in: query, schema: { type: string, enum: [activo, pendiente, suspendido] } }
+      responses: { '200': { description: OK } }
+  /api/admin/users/{id}/status:
+    patch:
+      tags: [Administración]
+      summary: Verifica, suspende o reactiva una cuenta (admin)
+      parameters: [{ $ref: '#/components/parameters/Id' }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [status]
+              properties:
+                status: { type: string, enum: [activo, suspendido] }
+      responses: { '200': { description: OK } }
+  /api/admin/audit:
+    get:
+      tags: [Administración]
+      summary: Registro de auditoría (admin)
+      responses: { '200': { description: OK } }
+  /api/stats:
+    get:
+      tags: [Estadísticas]
+      summary: Métricas según el rol
+      responses: { '200': { description: OK } }
+  /api/stats/public:
+    get:
+      tags: [Estadísticas]
+      security: []
+      summary: Métricas agregadas públicas
+      responses: { '200': { description: OK } }

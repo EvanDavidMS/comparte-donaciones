@@ -1,0 +1,96 @@
+# Comparte · Plataforma de gestión de donaciones
+
+Sistema web para gestionar donaciones de alimentos y recursos entre **empresas o personas donadoras** y **organizaciones sociales beneficiarias**, con un **equipo administrador** que verifica organizaciones y asigna las donaciones.
+
+- **Backend:** Node.js 20 + Express, autenticación **JWT** con roles.
+- **Almacenamiento:** en el propio servidor (memoria + archivo JSON con escritura atómica). **No usa base de datos ni servicios externos de pago.**
+- **Frontend:** HTML/CSS/JS sin frameworks, responsive (escritorio y móvil), modo claro/oscuro.
+- **Calidad:** Jest (129 pruebas, cobertura ≈ 99 %), ESLint, SonarQube, OWASP ZAP.
+- **CI/CD:** GitHub Actions con despliegue automático en un entorno de prueba (staging) basado en Docker.
+
+## Roles
+
+| Rol | Qué puede hacer |
+|---|---|
+| **Donador** | Publicar donaciones (con caducidad obligatoria para alimentos), ver su estado, cancelar las disponibles, ver su impacto (kg entregados, organizaciones apoyadas). |
+| **Beneficiario** | Registrarse como organización (queda *pendiente* hasta ser verificada), explorar/buscar donaciones disponibles, solicitarlas, cancelar solicitudes pendientes y confirmar la recepción. |
+| **Administrador** | Verificar, suspender o reactivar cuentas; aprobar, rechazar o revocar solicitudes; registrar entregas; cancelar donaciones; ver métricas globales y el registro de auditoría. No se puede crear desde el registro público. |
+
+### Flujo de una donación
+
+```
+Donador publica ──► DISPONIBLE ──► Organización solicita (PENDIENTE)
+                                          │
+                     Admin aprueba ◄──────┘  (las demás solicitudes se rechazan)
+                          │
+                      RESERVADA ──► Organización confirma recepción ──► ENTREGADA
+   (si la fecha de caducidad pasa sin asignarse ──► VENCIDA)
+```
+
+## Ejecutar en local
+
+```bash
+npm install
+npm start            # http://localhost:3000
+```
+
+En modo desarrollo se crean datos de demostración:
+
+| Cuenta | Correo | Contraseña |
+|---|---|---|
+| Administrador | `admin@comparte.org` | `Admin12345` |
+| Donador | `donador@comparte.org` | `Demo12345` |
+| Beneficiario (verificado) | `beneficiario@comparte.org` | `Demo12345` |
+| Beneficiario (sin verificar) | `albergue@comparte.org` | `Demo12345` |
+
+Los datos se guardan en `data/db.json` (se crea automáticamente, está en `.gitignore`). Variables de entorno en [`.env.example`](.env.example). En producción (`NODE_ENV=production`) son obligatorias `JWT_SECRET` (≥ 32 caracteres) y `ADMIN_PASSWORD`, y la demo se desactiva.
+
+### Con Docker
+
+```bash
+docker build -t comparte .
+docker run -p 3000:3000 -e NODE_ENV=production -e JWT_SECRET=<secreto-largo> \
+  -e ADMIN_PASSWORD=<contraseña> -v comparte-data:/app/data comparte
+```
+
+## Scripts
+
+| Comando | Descripción |
+|---|---|
+| `npm test` | Pruebas Jest con cobertura (umbral mínimo 80 % en líneas, ramas, funciones y sentencias). |
+| `npm run lint` | ESLint. |
+| `npm run smoke` | Prueba de humo contra un entorno desplegado (`BASE_URL`). |
+| `bash scripts/sonar-scan.sh` | Levanta SonarQube Community en Docker, analiza y genera `reports/sonarqube/`. |
+| `bash scripts/zap-scan.sh` | OWASP ZAP baseline + escaneo activo autenticado de la API, genera `reports/zap/`. |
+
+## Pipeline CI/CD (`.github/workflows/ci-cd.yml`)
+
+1. **Pruebas:** lint, Jest con umbral de cobertura, `npm audit`.
+2. **SonarQube:** SonarQube Community en contenedor efímero; métricas publicadas en el resumen y como artefacto.
+3. **Build:** imagen Docker (multi-stage, usuario sin privilegios, healthcheck).
+4. **Despliegue en staging:** se ejecuta el contenedor con secretos generados en el momento, prueba de humo de 17 verificaciones y **OWASP ZAP** (falla si hay alertas de riesgo Alto).
+5. **Publicación:** en `main`, la imagen se sube a GitHub Container Registry (`ghcr.io`).
+
+## Seguridad
+
+Resumen de controles (detalle en [`docs/SEGURIDAD.md`](docs/SEGURIDAD.md)):
+
+- JWT HS256 con emisor/audiencia, algoritmo fijado (rechaza `alg=none`), expiración de 2 h y **revocación en servidor** (logout y suspensión invalidan tokens).
+- Cookie `httpOnly` + `SameSite=Strict` + verificación de `Origin` (CSRF); el token no es accesible desde JavaScript.
+- Contraseñas con bcrypt, política de complejidad, bloqueo tras 5 intentos fallidos, mensajes genéricos y tiempo constante ante correos inexistentes.
+- Validación estricta con zod (rechaza campos desconocidos → sin asignación masiva ni escalada de rol), límite de 10 KB por petición, rate limiting.
+- Control de acceso por rol y por propietario (IDOR → 404), respuestas sin datos sensibles.
+- Frontend sin `innerHTML` con datos de usuario + CSP estricta sin `unsafe-inline` (XSS).
+- Cabeceras Helmet, `Cache-Control: no-store` en la API, errores sin trazas internas, auditoría de acciones.
+
+## Estructura
+
+```
+src/            API (config, middleware, rutas, servicios, almacenamiento)
+public/         Frontend (index.html, css, js/views por rol)
+tests/          Pruebas Jest + Supertest
+scripts/        Smoke test, SonarQube, OWASP ZAP y generadores de reportes
+docs/           OpenAPI, seguridad e informe de cierre
+reports/        Reportes generados: pruebas, SonarQube y OWASP ZAP
+.github/        Pipeline CI/CD
+```

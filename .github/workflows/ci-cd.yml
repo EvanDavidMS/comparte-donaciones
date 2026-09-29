@@ -1,0 +1,168 @@
+name: CI/CD
+
+# Pipeline completo: calidad → pruebas → SonarQube → build Docker →
+# despliegue automático en entorno de prueba (staging) → smoke test →
+# pruebas de seguridad OWASP ZAP → publicación de la imagen.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: 20
+  IMAGE_NAME: comparte
+
+jobs:
+  test:
+    name: 1 · Lint, pruebas unitarias y auditoría de dependencias
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+      - run: npm ci
+      - name: Lint (ESLint)
+        run: npm run lint
+      - name: Pruebas unitarias e integración (Jest, cobertura mínima 80 %)
+        run: npm run test:ci
+      - name: Auditoría de dependencias (SCA)
+        run: npm audit --omit=dev --audit-level=high
+      - name: Resumen de cobertura
+        if: always()
+        run: |
+          node -e "const s=require('./coverage/coverage-summary.json').total;console.log('## Cobertura de pruebas\n\n| Métrica | % |\n|---|---|\n'+['statements','branches','functions','lines'].map(k=>'| '+k+' | '+s[k].pct+' |').join('\n'))" >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reporte-pruebas
+          path: |
+            coverage/
+            reports/tests/
+
+  sonarqube:
+    name: 2 · Análisis de calidad (SonarQube)
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: reporte-pruebas
+      - name: SonarQube Community (contenedor efímero) + scanner
+        run: bash scripts/sonar-scan.sh
+        env:
+          SONAR_URL: http://localhost:9000
+          SCANNER_NET: host
+      - name: Publicar métricas en el resumen
+        run: cat reports/sonarqube/sonar-report.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: reporte-sonarqube
+          path: reports/sonarqube/
+
+  build:
+    name: 3 · Construcción de la imagen Docker
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: docker build
+        run: docker build -t $IMAGE_NAME:${{ github.sha }} .
+      - name: Exportar imagen
+        run: docker save $IMAGE_NAME:${{ github.sha }} | gzip > image.tar.gz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: imagen-docker
+          path: image.tar.gz
+          retention-days: 3
+
+  deploy-staging:
+    name: 4 · Despliegue en staging + smoke test + OWASP ZAP
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+      url: http://localhost:3000
+    env:
+      ADMIN_PASSWORD: ${{ secrets.STAGING_ADMIN_PASSWORD || 'Staging-Admin-2026' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: imagen-docker
+      - name: Cargar imagen
+        run: gunzip -c image.tar.gz | docker load
+      - name: Desplegar contenedor en entorno de prueba
+        run: |
+          JWT_SECRET=$(openssl rand -hex 48)
+          echo "::add-mask::$JWT_SECRET"
+          docker run -d --name comparte-staging -p 3000:3000 \
+            -e NODE_ENV=production -e JWT_SECRET="$JWT_SECRET" \
+            -e ADMIN_PASSWORD="$ADMIN_PASSWORD" -e SEED_DEMO=true \
+            -e AUTH_RATE_LIMIT=5000 -e API_RATE_LIMIT=50000 \
+            $IMAGE_NAME:${{ github.sha }}
+          for i in $(seq 1 30); do
+            curl -sf http://localhost:3000/api/health && break
+            sleep 2
+          done
+          curl -sf http://localhost:3000/api/health
+      - name: Prueba de humo (smoke test)
+        run: node scripts/smoke-test.js
+        env:
+          BASE_URL: http://localhost:3000
+      - name: Pruebas de seguridad OWASP ZAP (baseline + API activo)
+        run: bash scripts/zap-scan.sh
+        env:
+          APP_URL: http://localhost:3000
+          ZAP_NET: host
+      - name: Publicar resultado de ZAP en el resumen
+        if: always()
+        run: cat reports/zap/zap-summary.md >> "$GITHUB_STEP_SUMMARY" || true
+      - name: Logs del contenedor
+        if: failure()
+        run: docker logs comparte-staging
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reporte-owasp-zap
+          path: reports/zap/
+
+  publish:
+    name: 5 · Publicar imagen (GitHub Container Registry)
+    needs: [deploy-staging, sonarqube]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: imagen-docker
+      - name: Etiquetar y subir a ghcr.io
+        run: |
+          gunzip -c image.tar.gz | docker load
+          REPO=ghcr.io/$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+          docker tag $IMAGE_NAME:${{ github.sha }} $REPO:${{ github.sha }}
+          docker tag $IMAGE_NAME:${{ github.sha }} $REPO:latest
+          docker push $REPO:${{ github.sha }}
+          docker push $REPO:latest
+          echo "Imagen publicada: \`$REPO:latest\`" >> "$GITHUB_STEP_SUMMARY"
