@@ -19,14 +19,14 @@ ZAP by [Checkmarx](https://checkmarx.com/).
 
 | Level | Reason | Site | Description | Statistic |
 | --- | --- | --- | --- | --- |
-| Low | Exceeded High | http://host.docker.internal:3000 | Percentage of responses with status code 4xx | 99 % |
-| Info | Informational | http://host.docker.internal:3000 | Percentage of responses with status code 2xx | 2 % |
-| Info | Informational | http://host.docker.internal:3000 | Percentage of endpoints with content type application/json | 95 % |
-| Info | Informational | http://host.docker.internal:3000 | Percentage of endpoints with content type text/html | 2 % |
-| Info | Informational | http://host.docker.internal:3000 | Percentage of endpoints with method GET | 58 % |
-| Info | Informational | http://host.docker.internal:3000 | Percentage of endpoints with method PATCH | 29 % |
-| Info | Informational | http://host.docker.internal:3000 | Percentage of endpoints with method POST | 12 % |
-| Info | Informational | http://host.docker.internal:3000 | Count of total endpoints | 72    |
+| Low | Exceeded High | http://host.docker.internal:3100 | Percentage of responses with status code 4xx | 99 % |
+| Info | Informational | http://host.docker.internal:3100 | Percentage of responses with status code 2xx | 11 % |
+| Info | Informational | http://host.docker.internal:3100 | Percentage of endpoints with content type application/json | 95 % |
+| Info | Informational | http://host.docker.internal:3100 | Percentage of endpoints with content type text/html | 2 % |
+| Info | Informational | http://host.docker.internal:3100 | Percentage of endpoints with method GET | 58 % |
+| Info | Informational | http://host.docker.internal:3100 | Percentage of endpoints with method PATCH | 29 % |
+| Info | Informational | http://host.docker.internal:3100 | Percentage of endpoints with method POST | 12 % |
+| Info | Informational | http://host.docker.internal:3100 | Count of total endpoints | 72    |
 
 
 
@@ -62,22 +62,22 @@ A Content-Type of text/html was returned by the server.
 This is not one of the types expected to be returned by an API.
 Raised by the 'Alert on Unexpected Content Types' script
 
-* URL: http://host.docker.internal:3000
-  * Node Name: `http://host.docker.internal:3000`
+* URL: http://host.docker.internal:3100
+  * Node Name: `http://host.docker.internal:3100`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `text/html`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/
-  * Node Name: `http://host.docker.internal:3000/`
+* URL: http://host.docker.internal:3100/
+  * Node Name: `http://host.docker.internal:3100/`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `text/html`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/251000213747810783
-  * Node Name: `http://host.docker.internal:3000/251000213747810783`
+* URL: http://host.docker.internal:3100/274180690309078711
+  * Node Name: `http://host.docker.internal:3100/274180690309078711`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
@@ -110,498 +110,498 @@ A response code of 400 was returned by the server.
 This may indicate that the application is failing to handle unexpected input correctly.
 Raised by the 'Alert on HTTP Response Code Error' script
 
-* URL: http://host.docker.internal:3000/251000213747810783
-  * Node Name: `http://host.docker.internal:3000/251000213747810783`
+* URL: http://host.docker.internal:3100/274180690309078711
+  * Node Name: `http://host.docker.internal:3100/274180690309078711`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `404`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api
-  * Node Name: `http://host.docker.internal:3000/api`
+* URL: http://host.docker.internal:3100/api
+  * Node Name: `http://host.docker.internal:3100/api`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `404`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/
-  * Node Name: `http://host.docker.internal:3000/api/`
+* URL: http://host.docker.internal:3100/api/
+  * Node Name: `http://host.docker.internal:3100/api/`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `404`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/226166850204129031
-  * Node Name: `http://host.docker.internal:3000/api/226166850204129031`
+* URL: http://host.docker.internal:3100/api/5980565896321310199
+  * Node Name: `http://host.docker.internal:3100/api/5980565896321310199`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `404`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/admin
-  * Node Name: `http://host.docker.internal:3000/api/admin`
+* URL: http://host.docker.internal:3100/api/admin
+  * Node Name: `http://host.docker.internal:3100/api/admin`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/admin/
-  * Node Name: `http://host.docker.internal:3000/api/admin/`
+* URL: http://host.docker.internal:3100/api/admin/
+  * Node Name: `http://host.docker.internal:3100/api/admin/`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/admin/3612369630127564709
-  * Node Name: `http://host.docker.internal:3000/api/admin/3612369630127564709`
+* URL: http://host.docker.internal:3100/api/admin/7208277153756999970
+  * Node Name: `http://host.docker.internal:3100/api/admin/7208277153756999970`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/admin/audit
-  * Node Name: `http://host.docker.internal:3000/api/admin/audit`
+* URL: http://host.docker.internal:3100/api/admin/audit
+  * Node Name: `http://host.docker.internal:3100/api/admin/audit`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/admin/audit/
-  * Node Name: `http://host.docker.internal:3000/api/admin/audit/`
+* URL: http://host.docker.internal:3100/api/admin/audit/
+  * Node Name: `http://host.docker.internal:3100/api/admin/audit/`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/admin/users
-  * Node Name: `http://host.docker.internal:3000/api/admin/users`
+* URL: http://host.docker.internal:3100/api/admin/users
+  * Node Name: `http://host.docker.internal:3100/api/admin/users`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/admin/users%3Frole=admin&status=activo
-  * Node Name: `http://host.docker.internal:3000/api/admin/users (role,status)`
+* URL: http://host.docker.internal:3100/api/admin/users%3Frole=admin&status=activo
+  * Node Name: `http://host.docker.internal:3100/api/admin/users (role,status)`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/admin/users/
-  * Node Name: `http://host.docker.internal:3000/api/admin/users/`
+* URL: http://host.docker.internal:3100/api/admin/users/
+  * Node Name: `http://host.docker.internal:3100/api/admin/users/`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/admin/users/3479063856660139018
-  * Node Name: `http://host.docker.internal:3000/api/admin/users/3479063856660139018`
+* URL: http://host.docker.internal:3100/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60
+  * Node Name: `http://host.docker.internal:3100/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60
-  * Node Name: `http://host.docker.internal:3000/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60`
+* URL: http://host.docker.internal:3100/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/
+  * Node Name: `http://host.docker.internal:3100/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/
-  * Node Name: `http://host.docker.internal:3000/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/`
+* URL: http://host.docker.internal:3100/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/5863749571826094575
+  * Node Name: `http://host.docker.internal:3100/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/5863749571826094575`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/8843288001748273555
-  * Node Name: `http://host.docker.internal:3000/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/8843288001748273555`
+* URL: http://host.docker.internal:3100/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/actuator/health
+  * Node Name: `http://host.docker.internal:3100/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/actuator/health`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/actuator/health
-  * Node Name: `http://host.docker.internal:3000/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/actuator/health`
+* URL: http://host.docker.internal:3100/api/admin/users/8604106058426370984
+  * Node Name: `http://host.docker.internal:3100/api/admin/users/8604106058426370984`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/auth
-  * Node Name: `http://host.docker.internal:3000/api/auth`
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `404`
-  * Other Info: ``
-* URL: http://host.docker.internal:3000/api/auth/
-  * Node Name: `http://host.docker.internal:3000/api/auth/`
+* URL: http://host.docker.internal:3100/api/auth
+  * Node Name: `http://host.docker.internal:3100/api/auth`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `404`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/auth/955721010059761530
-  * Node Name: `http://host.docker.internal:3000/api/auth/955721010059761530`
+* URL: http://host.docker.internal:3100/api/auth/
+  * Node Name: `http://host.docker.internal:3100/api/auth/`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `404`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/auth/me
-  * Node Name: `http://host.docker.internal:3000/api/auth/me`
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `401`
-  * Other Info: ``
-* URL: http://host.docker.internal:3000/api/auth/me/
-  * Node Name: `http://host.docker.internal:3000/api/auth/me/`
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `401`
-  * Other Info: ``
-* URL: http://host.docker.internal:3000/api/donations
-  * Node Name: `http://host.docker.internal:3000/api/donations`
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `401`
-  * Other Info: ``
-* URL: http://host.docker.internal:3000/api/donations%3Fstatus=disponible&category=alimentos&q=arroz
-  * Node Name: `http://host.docker.internal:3000/api/donations (category,q,status)`
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `401`
-  * Other Info: ``
-* URL: http://host.docker.internal:3000/api/donations/
-  * Node Name: `http://host.docker.internal:3000/api/donations/`
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `401`
-  * Other Info: ``
-* URL: http://host.docker.internal:3000/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60
-  * Node Name: `http://host.docker.internal:3000/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60`
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `401`
-  * Other Info: ``
-* URL: http://host.docker.internal:3000/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/
-  * Node Name: `http://host.docker.internal:3000/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/`
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `401`
-  * Other Info: ``
-* URL: http://host.docker.internal:3000/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/7008613887733656056
-  * Node Name: `http://host.docker.internal:3000/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/7008613887733656056`
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `401`
-  * Other Info: ``
-* URL: http://host.docker.internal:3000/api/donations/5148731043914456814
-  * Node Name: `http://host.docker.internal:3000/api/donations/5148731043914456814`
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `401`
-  * Other Info: ``
-* URL: http://host.docker.internal:3000/api/requests
-  * Node Name: `http://host.docker.internal:3000/api/requests`
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `401`
-  * Other Info: ``
-* URL: http://host.docker.internal:3000/api/requests%3Fstatus=pendiente&donationId=donationId
-  * Node Name: `http://host.docker.internal:3000/api/requests (donationId,status)`
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `401`
-  * Other Info: ``
-* URL: http://host.docker.internal:3000/api/requests/
-  * Node Name: `http://host.docker.internal:3000/api/requests/`
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `401`
-  * Other Info: ``
-* URL: http://host.docker.internal:3000/api/requests/2151910648960019022
-  * Node Name: `http://host.docker.internal:3000/api/requests/2151910648960019022`
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `401`
-  * Other Info: ``
-* URL: http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60
-  * Node Name: `http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60`
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `401`
-  * Other Info: ``
-* URL: http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/
-  * Node Name: `http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/`
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `401`
-  * Other Info: ``
-* URL: http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/8708450463079984686
-  * Node Name: `http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/8708450463079984686`
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `401`
-  * Other Info: ``
-* URL: http://host.docker.internal:3000/api/stats
-  * Node Name: `http://host.docker.internal:3000/api/stats`
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `401`
-  * Other Info: ``
-* URL: http://host.docker.internal:3000/api/stats/
-  * Node Name: `http://host.docker.internal:3000/api/stats/`
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `401`
-  * Other Info: ``
-* URL: http://host.docker.internal:3000/api/stats/9043608680249633902
-  * Node Name: `http://host.docker.internal:3000/api/stats/9043608680249633902`
+* URL: http://host.docker.internal:3100/api/auth/56510135622465779
+  * Node Name: `http://host.docker.internal:3100/api/auth/56510135622465779`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `404`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/status
-  * Node Name: `http://host.docker.internal:3000/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/status ()({status})`
+* URL: http://host.docker.internal:3100/api/auth/me
+  * Node Name: `http://host.docker.internal:3100/api/auth/me`
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `401`
+  * Other Info: ``
+* URL: http://host.docker.internal:3100/api/auth/me/
+  * Node Name: `http://host.docker.internal:3100/api/auth/me/`
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `401`
+  * Other Info: ``
+* URL: http://host.docker.internal:3100/api/donations
+  * Node Name: `http://host.docker.internal:3100/api/donations`
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `401`
+  * Other Info: ``
+* URL: http://host.docker.internal:3100/api/donations%3Fstatus=disponible&category=alimentos&q=arroz
+  * Node Name: `http://host.docker.internal:3100/api/donations (category,q,status)`
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `401`
+  * Other Info: ``
+* URL: http://host.docker.internal:3100/api/donations/
+  * Node Name: `http://host.docker.internal:3100/api/donations/`
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `401`
+  * Other Info: ``
+* URL: http://host.docker.internal:3100/api/donations/1902929423829731122
+  * Node Name: `http://host.docker.internal:3100/api/donations/1902929423829731122`
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `401`
+  * Other Info: ``
+* URL: http://host.docker.internal:3100/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60
+  * Node Name: `http://host.docker.internal:3100/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60`
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `401`
+  * Other Info: ``
+* URL: http://host.docker.internal:3100/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/
+  * Node Name: `http://host.docker.internal:3100/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/`
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `401`
+  * Other Info: ``
+* URL: http://host.docker.internal:3100/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/2428422402388507616
+  * Node Name: `http://host.docker.internal:3100/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/2428422402388507616`
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `401`
+  * Other Info: ``
+* URL: http://host.docker.internal:3100/api/requests
+  * Node Name: `http://host.docker.internal:3100/api/requests`
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `401`
+  * Other Info: ``
+* URL: http://host.docker.internal:3100/api/requests%3Fstatus=pendiente&donationId=donationId
+  * Node Name: `http://host.docker.internal:3100/api/requests (donationId,status)`
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `401`
+  * Other Info: ``
+* URL: http://host.docker.internal:3100/api/requests/
+  * Node Name: `http://host.docker.internal:3100/api/requests/`
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `401`
+  * Other Info: ``
+* URL: http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60
+  * Node Name: `http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60`
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `401`
+  * Other Info: ``
+* URL: http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/
+  * Node Name: `http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/`
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `401`
+  * Other Info: ``
+* URL: http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/1727004665978824747
+  * Node Name: `http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/1727004665978824747`
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `401`
+  * Other Info: ``
+* URL: http://host.docker.internal:3100/api/requests/7571197216808896130
+  * Node Name: `http://host.docker.internal:3100/api/requests/7571197216808896130`
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `401`
+  * Other Info: ``
+* URL: http://host.docker.internal:3100/api/stats
+  * Node Name: `http://host.docker.internal:3100/api/stats`
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `401`
+  * Other Info: ``
+* URL: http://host.docker.internal:3100/api/stats/
+  * Node Name: `http://host.docker.internal:3100/api/stats/`
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `401`
+  * Other Info: ``
+* URL: http://host.docker.internal:3100/api/stats/5648976684656765859
+  * Node Name: `http://host.docker.internal:3100/api/stats/5648976684656765859`
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `404`
+  * Other Info: ``
+* URL: http://host.docker.internal:3100/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/status
+  * Node Name: `http://host.docker.internal:3100/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/status ()({status})`
   * Method: `PATCH`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/status/
-  * Node Name: `http://host.docker.internal:3000/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/status/ ()({status})`
+* URL: http://host.docker.internal:3100/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/status/
+  * Node Name: `http://host.docker.internal:3100/api/admin/users/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/status/ ()({status})`
   * Method: `PATCH`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/cancel
-  * Node Name: `http://host.docker.internal:3000/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/cancel`
+* URL: http://host.docker.internal:3100/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/cancel
+  * Node Name: `http://host.docker.internal:3100/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/cancel`
   * Method: `PATCH`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/cancel/
-  * Node Name: `http://host.docker.internal:3000/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/cancel/`
+* URL: http://host.docker.internal:3100/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/cancel/
+  * Node Name: `http://host.docker.internal:3100/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/cancel/`
   * Method: `PATCH`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/approve
-  * Node Name: `http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/approve`
+* URL: http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/approve
+  * Node Name: `http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/approve`
   * Method: `PATCH`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/approve/
-  * Node Name: `http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/approve/`
+* URL: http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/approve/
+  * Node Name: `http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/approve/`
   * Method: `PATCH`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/cancel
-  * Node Name: `http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/cancel`
+* URL: http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/cancel
+  * Node Name: `http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/cancel`
   * Method: `PATCH`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/cancel/
-  * Node Name: `http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/cancel/`
+* URL: http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/cancel/
+  * Node Name: `http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/cancel/`
   * Method: `PATCH`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/confirm
-  * Node Name: `http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/confirm`
+* URL: http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/confirm
+  * Node Name: `http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/confirm`
   * Method: `PATCH`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/confirm/
-  * Node Name: `http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/confirm/`
+* URL: http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/confirm/
+  * Node Name: `http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/confirm/`
   * Method: `PATCH`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/reject
-  * Node Name: `http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/reject ()({reason})`
+* URL: http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/reject
+  * Node Name: `http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/reject ()({reason})`
   * Method: `PATCH`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/reject/
-  * Node Name: `http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/reject/ ()({reason})`
+* URL: http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/reject/
+  * Node Name: `http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/reject/ ()({reason})`
   * Method: `PATCH`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/revoke
-  * Node Name: `http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/revoke ()({reason})`
+* URL: http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/revoke
+  * Node Name: `http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/revoke ()({reason})`
   * Method: `PATCH`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/revoke/
-  * Node Name: `http://host.docker.internal:3000/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/revoke/ ()({reason})`
+* URL: http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/revoke/
+  * Node Name: `http://host.docker.internal:3100/api/requests/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/revoke/ ()({reason})`
   * Method: `PATCH`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/computeMetadata/v1/
-  * Node Name: `http://host.docker.internal:3000/computeMetadata/v1/ ()({status})`
+* URL: http://host.docker.internal:3100/computeMetadata/v1/
+  * Node Name: `http://host.docker.internal:3100/computeMetadata/v1/ ()({status})`
   * Method: `PATCH`
   * Parameter: ``
   * Attack: ``
   * Evidence: `405`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/latest/meta-data/
-  * Node Name: `http://host.docker.internal:3000/latest/meta-data/ ()({status})`
+* URL: http://host.docker.internal:3100/latest/meta-data/
+  * Node Name: `http://host.docker.internal:3100/latest/meta-data/ ()({status})`
   * Method: `PATCH`
   * Parameter: ``
   * Attack: ``
   * Evidence: `405`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/metadata/instance
-  * Node Name: `http://host.docker.internal:3000/metadata/instance ()({status})`
+* URL: http://host.docker.internal:3100/metadata/instance
+  * Node Name: `http://host.docker.internal:3100/metadata/instance ()({status})`
   * Method: `PATCH`
   * Parameter: ``
   * Attack: ``
   * Evidence: `405`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/metadata/v1
-  * Node Name: `http://host.docker.internal:3000/metadata/v1 ()({status})`
+* URL: http://host.docker.internal:3100/metadata/v1
+  * Node Name: `http://host.docker.internal:3100/metadata/v1 ()({status})`
   * Method: `PATCH`
   * Parameter: ``
   * Attack: ``
   * Evidence: `405`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/opc/v1/instance/
-  * Node Name: `http://host.docker.internal:3000/opc/v1/instance/ ()({status})`
+* URL: http://host.docker.internal:3100/opc/v1/instance/
+  * Node Name: `http://host.docker.internal:3100/opc/v1/instance/ ()({status})`
   * Method: `PATCH`
   * Parameter: ``
   * Attack: ``
   * Evidence: `405`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/opc/v2/instance/
-  * Node Name: `http://host.docker.internal:3000/opc/v2/instance/ ()({status})`
+* URL: http://host.docker.internal:3100/opc/v2/instance/
+  * Node Name: `http://host.docker.internal:3100/opc/v2/instance/ ()({status})`
   * Method: `PATCH`
   * Parameter: ``
   * Attack: ``
   * Evidence: `405`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/openstack/latest/meta_data.json
-  * Node Name: `http://host.docker.internal:3000/openstack/latest/meta_data.json ()({status})`
+* URL: http://host.docker.internal:3100/openstack/latest/meta_data.json
+  * Node Name: `http://host.docker.internal:3100/openstack/latest/meta_data.json ()({status})`
   * Method: `PATCH`
   * Parameter: ``
   * Attack: ``
   * Evidence: `405`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/auth/login
-  * Node Name: `http://host.docker.internal:3000/api/auth/login ()({email,password})`
+* URL: http://host.docker.internal:3100/api/auth/login
+  * Node Name: `http://host.docker.internal:3100/api/auth/login ()({email,password})`
   * Method: `POST`
   * Parameter: ``
   * Attack: ``
   * Evidence: `400`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/auth/login
-  * Node Name: `http://host.docker.internal:3000/api/auth/login ()({email,password})`
+* URL: http://host.docker.internal:3100/api/auth/login
+  * Node Name: `http://host.docker.internal:3100/api/auth/login ()({email,password})`
   * Method: `POST`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/auth/login
-  * Node Name: `http://host.docker.internal:3000/api/auth/login ()({email,password})`
+* URL: http://host.docker.internal:3100/api/auth/login
+  * Node Name: `http://host.docker.internal:3100/api/auth/login ()({email,password})`
   * Method: `POST`
   * Parameter: ``
   * Attack: ``
   * Evidence: `423`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/auth/login/
-  * Node Name: `http://host.docker.internal:3000/api/auth/login/ ()({email,password})`
+* URL: http://host.docker.internal:3100/api/auth/login/
+  * Node Name: `http://host.docker.internal:3100/api/auth/login/ ()({email,password})`
   * Method: `POST`
   * Parameter: ``
   * Attack: ``
   * Evidence: `423`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/auth/register
-  * Node Name: `http://host.docker.internal:3000/api/auth/register ()({name,email,password,role,organization})`
+* URL: http://host.docker.internal:3100/api/auth/register
+  * Node Name: `http://host.docker.internal:3100/api/auth/register ()({name,email,password,role,organization})`
   * Method: `POST`
   * Parameter: ``
   * Attack: ``
   * Evidence: `400`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/auth/register
-  * Node Name: `http://host.docker.internal:3000/api/auth/register ()({name,email,password,role,organization})`
+* URL: http://host.docker.internal:3100/api/auth/register
+  * Node Name: `http://host.docker.internal:3100/api/auth/register ()({name,email,password,role,organization})`
   * Method: `POST`
   * Parameter: ``
   * Attack: ``
   * Evidence: `409`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/auth/register/
-  * Node Name: `http://host.docker.internal:3000/api/auth/register/ ()({name,email,password,role,organization})`
+* URL: http://host.docker.internal:3100/api/auth/register/
+  * Node Name: `http://host.docker.internal:3100/api/auth/register/ ()({name,email,password,role,organization})`
   * Method: `POST`
   * Parameter: ``
   * Attack: ``
   * Evidence: `400`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/donations
-  * Node Name: `http://host.docker.internal:3000/api/donations ()({title,category,quantity,unit,expiresAt,location,description})`
+* URL: http://host.docker.internal:3100/api/donations
+  * Node Name: `http://host.docker.internal:3100/api/donations ()({title,category,quantity,unit,expiresAt,location,description})`
   * Method: `POST`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/donations/
-  * Node Name: `http://host.docker.internal:3000/api/donations/ ()({title,category,quantity,unit,expiresAt,location,description})`
+* URL: http://host.docker.internal:3100/api/donations/
+  * Node Name: `http://host.docker.internal:3100/api/donations/ ()({title,category,quantity,unit,expiresAt,location,description})`
   * Method: `POST`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/requests
-  * Node Name: `http://host.docker.internal:3000/api/requests ()({donationId,message})`
+* URL: http://host.docker.internal:3100/api/requests
+  * Node Name: `http://host.docker.internal:3100/api/requests ()({donationId,message})`
   * Method: `POST`
   * Parameter: ``
   * Attack: ``
   * Evidence: `401`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/requests/
-  * Node Name: `http://host.docker.internal:3000/api/requests/ ()({donationId,message})`
+* URL: http://host.docker.internal:3100/api/requests/
+  * Node Name: `http://host.docker.internal:3100/api/requests/ ()({donationId,message})`
   * Method: `POST`
   * Parameter: ``
   * Attack: ``
@@ -636,8 +636,8 @@ Instances: 71
 
 The given request has been identified as an authentication request. The 'Other Info' field contains a set of key=value lines which identify any relevant fields. If the request is in a context which has an Authentication Method set to "Auto-Detect" then this rule will change the authentication to match the request identified.
 
-* URL: http://host.docker.internal:3000/api/auth/login
-  * Node Name: `http://host.docker.internal:3000/api/auth/login ()({email,password})`
+* URL: http://host.docker.internal:3100/api/auth/login
+  * Node Name: `http://host.docker.internal:3100/api/auth/login ()({email,password})`
   * Method: `POST`
   * Parameter: `email`
   * Attack: ``
@@ -672,36 +672,36 @@ This is an informational alert rather than a vulnerability and so there is nothi
 
 The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.
 
-* URL: http://host.docker.internal:3000/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60
-  * Node Name: `http://host.docker.internal:3000/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60`
+* URL: http://host.docker.internal:3100/api/auth/me
+  * Node Name: `http://host.docker.internal:3100/api/auth/me`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `no-store`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/health
-  * Node Name: `http://host.docker.internal:3000/api/health`
+* URL: http://host.docker.internal:3100/api/health
+  * Node Name: `http://host.docker.internal:3100/api/health`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `no-store`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/auth/register
-  * Node Name: `http://host.docker.internal:3000/api/auth/register ()({name,email,password,role,organization})`
-  * Method: `POST`
+* URL: http://host.docker.internal:3100/api/requests%3Fstatus=pendiente&donationId=donationId
+  * Node Name: `http://host.docker.internal:3100/api/requests (donationId,status)`
+  * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `no-store`
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/donations
-  * Node Name: `http://host.docker.internal:3000/api/donations ()({title,category,quantity,unit,expiresAt,location,description})`
-  * Method: `POST`
+* URL: http://host.docker.internal:3100/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/cancel
+  * Node Name: `http://host.docker.internal:3100/api/donations/3f1c2b8e-9a4d-4c1e-8f2a-1b2c3d4e5f60/cancel`
+  * Method: `PATCH`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `no-store`
+  * Evidence: `PATCH `
   * Other Info: ``
-* URL: http://host.docker.internal:3000/api/requests
-  * Node Name: `http://host.docker.internal:3000/api/requests ()({donationId,message})`
+* URL: http://host.docker.internal:3100/api/requests
+  * Node Name: `http://host.docker.internal:3100/api/requests ()({donationId,message})`
   * Method: `POST`
   * Parameter: ``
   * Attack: ``

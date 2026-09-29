@@ -38,7 +38,7 @@ export async function dashboard({ go }) {
       { class: 'grid-2' },
       h(
         'section',
-        { class: 'card' },
+        { class: 'card', 'data-tour': 'activity' },
         h('h2', {}, 'Usuarios'),
         h('p', { class: 'card-sub' }, `${num(stats.users.total)} cuentas registradas`),
         kv([
@@ -62,7 +62,7 @@ export async function dashboard({ go }) {
     ),
     h(
       'div',
-      { class: 'grid-2' },
+      { class: 'grid-2', 'data-tour': 'charts' },
       h(
         'section',
         { class: 'card' },
@@ -111,7 +111,7 @@ export async function requests({ refreshChrome }) {
       }),
       h(
         'div',
-        { class: 'section-head' },
+        { class: 'section-head', 'data-tour': 'filters' },
         chips(
           [
             ['pendiente', 'Por revisar'],
@@ -129,7 +129,7 @@ export async function requests({ refreshChrome }) {
       ),
       h(
         'div',
-        { class: 'section' },
+        { class: 'section', 'data-tour': 'table' },
         table(
           [
             {
@@ -225,7 +225,7 @@ export async function donations() {
       pageHead('Donaciones', 'Todas las donaciones publicadas en la red', { icon: 'package', value: `${num(list.length)}`, label: filter ? 'En este filtro' : 'Totales' }),
       h(
         'div',
-        { class: 'section-head' },
+        { class: 'section-head', 'data-tour': 'filters' },
         chips(
           [
             ['', 'Todas'],
@@ -244,7 +244,7 @@ export async function donations() {
       ),
       h(
         'div',
-        { class: 'section' },
+        { class: 'section', 'data-tour': 'table' },
         table(
           [
             { label: 'Donación', primary: true, render: (d) => h('div', { class: 'cell-main' }, categoryIcon(d.category), h('div', {}, h('strong', {}, d.title), h('small', {}, d.location))) },
@@ -320,7 +320,7 @@ export async function users({ refreshChrome }) {
       pageHead('Usuarios', 'Verifica organizaciones y gestiona el acceso', { icon: 'users', value: `${num(list.length)}`, label: filter === 'pendiente' ? 'Por verificar' : 'En este filtro' }),
       h(
         'div',
-        { class: 'section-head' },
+        { class: 'section-head', 'data-tour': 'filters' },
         chips(
           [
             ['pendiente', 'Por verificar'],
@@ -337,7 +337,7 @@ export async function users({ refreshChrome }) {
       ),
       h(
         'div',
-        { class: 'section' },
+        { class: 'section', 'data-tour': 'table' },
         table(
           [
             {
@@ -376,7 +376,23 @@ export async function users({ refreshChrome }) {
 }
 
 // ---------- Auditoría ----------
-const actionLabel = (a) => a.charAt(0) + a.slice(1).toLowerCase().replaceAll('_', ' ');
+const ACTION_LABELS = {
+  REGISTRO: 'Registro',
+  INICIO_SESION: 'Inicio de sesión',
+  CUENTA_BLOQUEADA: 'Cuenta bloqueada',
+  DONACION_PUBLICADA: 'Donación publicada',
+  DONACION_CANCELADA: 'Donación cancelada',
+  SOLICITUD_CREADA: 'Solicitud creada',
+  SOLICITUD_CANCELADA: 'Solicitud cancelada',
+  SOLICITUD_APROBADA: 'Solicitud aprobada',
+  SOLICITUD_RECHAZADA: 'Solicitud rechazada',
+  ASIGNACION_REVOCADA: 'Asignación revocada',
+  ENTREGA_CONFIRMADA: 'Entrega confirmada',
+  USUARIO_VERIFICADO: 'Organización verificada',
+  USUARIO_SUSPENDIDO: 'Cuenta suspendida',
+  USUARIO_REACTIVADO: 'Cuenta reactivada',
+};
+const actionLabel = (a) => ACTION_LABELS[a] || a;
 
 export async function audit() {
   const { entries } = await api.audit();
@@ -386,7 +402,7 @@ export async function audit() {
     pageHead('Auditoría', 'Registro de acciones relevantes en la plataforma', { icon: 'shield', value: `${num(entries.length)}`, label: 'Eventos recientes' }),
     h(
       'div',
-      { class: 'section' },
+      { class: 'section', 'data-tour': 'table' },
       table(
         [
           { label: 'Fecha', render: (e) => dateTime(e.at) },

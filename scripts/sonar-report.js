@@ -10,7 +10,7 @@ const path = require('node:path');
 
 const HOST = process.env.SONAR_HOST_URL || 'http://localhost:9000';
 const TOKEN = process.env.SONAR_TOKEN;
-const KEY = process.env.SONAR_PROJECT_KEY || 'comparte-donaciones';
+const KEY = process.env.SONAR_PROJECT_KEY || 'conecta-mas-donaciones';
 const OUT = process.argv[2] || 'reports/sonarqube';
 
 const METRICS = [

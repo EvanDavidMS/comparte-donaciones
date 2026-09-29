@@ -38,7 +38,7 @@ function loadConfig(env = process.env) {
     cookieSecure: env.COOKIE_SECURE ? env.COOKIE_SECURE === 'true' : isProduction,
     trustProxy: env.TRUST_PROXY === 'true',
     dataFile: env.DATA_FILE === 'none' ? null : env.DATA_FILE || 'data/db.json',
-    adminEmail: (env.ADMIN_EMAIL || 'admin@comparte.org').toLowerCase(),
+    adminEmail: (env.ADMIN_EMAIL || 'admin@conectamas.org').toLowerCase(),
     adminPassword,
     seedDemo: env.SEED_DEMO ? env.SEED_DEMO === 'true' : !isProduction,
     demoPassword,

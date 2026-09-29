@@ -9,8 +9,8 @@ set -euo pipefail
 SONAR_URL="${SONAR_URL:-http://localhost:9000}"
 SCANNER_HOST="${SCANNER_HOST:-$SONAR_URL}"
 SCANNER_NET="${SCANNER_NET:-host}"
-PASS="${SONAR_ADMIN_PASSWORD:-Comparte-Sonar-2026!}"
-CONTAINER=comparte-sonarqube
+PASS="${SONAR_ADMIN_PASSWORD:-ConectaMas-Sonar-2026!}"
+CONTAINER=conecta-sonarqube
 
 if ! docker ps --format '{{.Names}}' | grep -q "^${CONTAINER}$"; then
   docker rm -f "$CONTAINER" >/dev/null 2>&1 || true

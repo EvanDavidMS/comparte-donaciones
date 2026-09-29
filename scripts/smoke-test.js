@@ -6,7 +6,7 @@
  * Uso: BASE_URL=http://localhost:3000 ADMIN_PASSWORD=... node scripts/smoke-test.js
  */
 const BASE = process.env.BASE_URL || 'http://localhost:3000';
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@comparte.org';
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@conectamas.org';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'Admin12345';
 const stamp = Date.now();
 let passed = 0;
@@ -38,7 +38,7 @@ async function main() {
   check('health responde ok', health.status === 200 && health.json.status === 'ok');
 
   const home = await call('GET', '/');
-  check('la aplicación web carga', home.status === 200 && home.text.includes('Comparte'));
+  check('la aplicación web carga', home.status === 200 && home.text.includes('Conecta +'));
   check('cabecera CSP presente', /script-src 'self'/.test(home.headers.get('content-security-policy') || ''));
   check('X-Powered-By oculto', !home.headers.get('x-powered-by'));
 

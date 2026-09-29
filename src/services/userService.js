@@ -9,7 +9,7 @@ const BCRYPT_ROUNDS = 10;
 const MAX_FAILED_LOGINS = 5;
 const LOCK_MS = 15 * 60 * 1000;
 // Hash de referencia para igualar el tiempo de respuesta cuando el correo no existe.
-const DUMMY_HASH = bcrypt.hashSync('comparte-timing-guard', BCRYPT_ROUNDS);
+const DUMMY_HASH = bcrypt.hashSync('conecta-timing-guard', BCRYPT_ROUNDS);
 
 /** Proyección segura del usuario: nunca incluye hash, intentos ni versión de token. */
 function publicUser(user) {

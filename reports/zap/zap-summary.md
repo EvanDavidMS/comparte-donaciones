@@ -1,6 +1,6 @@
 # Resumen de seguridad — OWASP ZAP
 
-Fecha: 2026-09-29T05:38:54.974Z
+Fecha: 2026-09-29T06:13:12.386Z
 
 | Riesgo | Alertas |
 |---|---|
@@ -16,7 +16,7 @@ Fecha: 2026-09-29T05:38:54.974Z
 | api | Informativo | Authentication Request Identified | 1 | 10111 |
 | baseline | Informativo | Information Disclosure - Information in Browser localStorage | 1 | 120000 |
 | baseline | Informativo | Modern Web Application | 2 | 10109 |
-| baseline | Informativo | Non-Storable Content | 1 | 10049 |
+| baseline | Informativo | Non-Storable Content | 2 | 10049 |
 | api | Informativo | Non-Storable Content | 5 | 10049 |
 | baseline | Informativo | Storable and Cacheable Content | 1 | 10049 |
 | baseline | Informativo | Storable but Non-Cacheable Content | 5 | 10049 |

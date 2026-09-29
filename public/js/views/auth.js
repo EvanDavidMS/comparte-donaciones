@@ -19,7 +19,7 @@ export async function authView(mode, { onLogin, themeToggle }) {
     h(
       'header',
       { class: 'auth-top' },
-      h('a', { class: 'brand', href: '#/login' }, h('img', { src: '/img/logo.svg', alt: '' }), h('span', {}, 'Comparte', h('small', {}, 'Red de donaciones'))),
+      h('a', { class: 'brand', href: '#/login' }, h('img', { src: '/img/logo.svg', alt: '' }), h('span', {}, 'Conecta +', h('small', {}, 'Red de donaciones'))),
       h('div', { class: 'spacer' }),
       h('a', { class: 'btn btn-primary', href: isLogin ? '#/registro' : '#/login' }, isLogin ? 'Crear cuenta' : 'Iniciar sesión'),
       themeToggle(),
@@ -27,7 +27,7 @@ export async function authView(mode, { onLogin, themeToggle }) {
     h(
       'main',
       { class: 'auth-page' },
-      pageHead(isLogin ? 'Bienvenido a Comparte' : 'Únete a la red', 'Conectamos excedentes de empresas con organizaciones sociales', {
+      pageHead(isLogin ? 'Bienvenido a Conecta +' : 'Únete a la red', 'Conectamos excedentes de empresas con organizaciones sociales', {
         icon: 'heart',
         value: `${num(stats.deliveredKg)} kg`,
         label: 'Alimentos entregados',

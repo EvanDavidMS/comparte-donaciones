@@ -1,10 +1,10 @@
-# Seguridad de Comparte
+# Seguridad de Conecta +
 
 Este documento describe los controles implementados, cómo se verificaron y los hallazgos de las pruebas de seguridad (OWASP ZAP) y del análisis de calidad (SonarQube), junto con sus correcciones.
 
 ## 1. Controles implementados (OWASP Top 10 · 2021)
 
-| Riesgo OWASP | Control en Comparte | Evidencia |
+| Riesgo OWASP | Control en Conecta + | Evidencia |
 |---|---|---|
 | A01 Control de acceso roto | Autorización por rol en cada ruta (`authorize`), verificación de propietario en servicios (un donador no ve ni cancela donaciones ajenas; IDOR → 404 para no revelar existencia), el rol `admin` no puede registrarse públicamente, las cuentas admin no se pueden modificar desde la API. | `tests/donations.test.js`, `tests/requests.test.js`, `tests/admin.test.js` |
 | A02 Fallas criptográficas | bcrypt (10 rondas) para contraseñas; JWT HS256 con secreto ≥ 32 caracteres obligatorio en producción; cookies `Secure` en producción; nunca se devuelve el hash. | `tests/auth.test.js`, `tests/units.test.js` |
@@ -42,7 +42,7 @@ El pipeline falla si aparece alguna alerta de riesgo **Alto** (`scripts/zap-summ
 | *Unexpected Content-Type was returned* (100001): rutas fuera de `/api` respondían HTML a `PATCH /latest/meta-data/`, `/computeMetadata/v1/`, etc. | Bajo | **Corregido.** Fuera de la API solo se aceptan GET/HEAD (`405` en JSON con cabecera `Allow`), y los clientes que no aceptan HTML reciben `404` en JSON. Las 3 instancias restantes son `GET /` (la aplicación HTML) y la página 404 para navegadores: comportamiento esperado. |
 | *Information Disclosure – Suspicious Comments* (10027) en `public/js/dom.js` | Informativo | **Corregido.** Un comentario empezaba por “Todo…”, que ZAP interpreta como `TODO`. |
 | *Non-Storable Content* (10049) | Informativo | **Intencional.** `Cache-Control: no-store` en la API para no guardar datos personales en cachés. |
-| *Information in Browser localStorage* (120000) | Informativo | **Aceptado.** Solo guarda la preferencia de tema claro/oscuro. |
+| *Information in Browser localStorage* (120000) | Informativo | **Aceptado.** Solo guarda la preferencia de tema claro/oscuro y si el usuario ya vio la ruta guiada (sin datos personales ni tokens). |
 | *Authentication Request Identified* (10111), *Client Error response* (100000), *Modern Web Application* (10109) | Informativo | **Esperado.** Identificación del login y respuestas 4xx de validación ante entradas maliciosas. |
 
 ## 3. Análisis de calidad — SonarQube

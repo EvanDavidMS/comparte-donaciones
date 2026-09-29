@@ -19,7 +19,7 @@ concurrency:
 
 env:
   NODE_VERSION: 20
-  IMAGE_NAME: comparte
+  IMAGE_NAME: conecta
 
 jobs:
   test:
@@ -115,7 +115,7 @@ jobs:
         run: |
           JWT_SECRET=$(openssl rand -hex 48)
           echo "::add-mask::$JWT_SECRET"
-          docker run -d --name comparte-staging -p 3000:3000 \
+          docker run -d --name conecta-staging -p 3000:3000 \
             -e NODE_ENV=production -e JWT_SECRET="$JWT_SECRET" \
             -e ADMIN_PASSWORD="$ADMIN_PASSWORD" -e SEED_DEMO=true \
             -e AUTH_RATE_LIMIT=5000 -e API_RATE_LIMIT=50000 \
@@ -139,7 +139,7 @@ jobs:
         run: cat reports/zap/zap-summary.md >> "$GITHUB_STEP_SUMMARY" || true
       - name: Logs del contenedor
         if: failure()
-        run: docker logs comparte-staging
+        run: docker logs conecta-staging
       - uses: actions/upload-artifact@v5
         if: always()
         with:

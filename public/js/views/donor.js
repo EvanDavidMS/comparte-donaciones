@@ -82,7 +82,7 @@ export async function dashboard({ user, go }) {
         { class: 'grid-2' },
         h(
           'section',
-          { class: 'card' },
+          { class: 'card', 'data-tour': 'activity' },
           h('h2', {}, 'Tu actividad'),
           h('p', { class: 'card-sub' }, user.organization || 'Donador particular'),
           kv([
@@ -184,7 +184,7 @@ export async function donate({ go }) {
       { class: 'grid-2' },
       h(
         'section',
-        { class: 'card' },
+        { class: 'card', 'data-tour': 'form' },
         tabs(
           [
             ['nueva', 'Nueva donación'],
@@ -197,7 +197,7 @@ export async function donate({ go }) {
       ),
       h(
         'section',
-        { class: 'metrics steps', 'aria-label': 'Cómo funciona' },
+        { class: 'metrics steps', 'data-tour': 'steps', 'aria-label': 'Cómo funciona' },
         step(1, 'Publicas la donación', 'Indica qué es, cuánto hay y dónde se recoge. Queda visible al instante.'),
         step(2, 'Las organizaciones la solicitan', 'Organizaciones sociales verificadas explican para qué la necesitan.'),
         step(3, 'Se aprueba y se entrega', 'El equipo administrador asigna la donación y la organización confirma la recepción.'),
@@ -226,7 +226,7 @@ export async function myDonations({ go }) {
       }),
       h(
         'div',
-        { class: 'section-head' },
+        { class: 'section-head', 'data-tour': 'filters' },
         chips(
           [
             ['', 'Todas'],
@@ -244,7 +244,7 @@ export async function myDonations({ go }) {
         ),
         h('button', { type: 'button', class: 'btn btn-primary', onclick: () => go('donar') }, icon('plus'), 'Nueva donación'),
       ),
-      h('div', { class: 'section' }, table(donationColumns(draw), donations, empty('No hay donaciones en esta vista', 'Cambia el filtro o publica una nueva donación.', 'package'))),
+      h('div', { class: 'section', 'data-tour': 'table' }, table(donationColumns(draw), donations, empty('No hay donaciones en esta vista', 'Cambia el filtro o publica una nueva donación.', 'package'))),
       notice('¿Cómo avanza una donación?', 'Disponible → Reservada (un administrador aprobó a una organización) → Entregada (la organización confirmó que la recibió).'),
     );
   }

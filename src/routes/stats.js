@@ -13,9 +13,9 @@ module.exports = function statsRoutes({ store, config }) {
     ? {
         password: config.demoPassword,
         accounts: [
-          { role: 'donador', email: 'donador@comparte.org' },
-          { role: 'beneficiario', email: 'beneficiario@comparte.org' },
-          { role: 'beneficiario (sin verificar)', email: 'albergue@comparte.org' },
+          { role: 'donador', email: 'donador@conectamas.org' },
+          { role: 'beneficiario', email: 'beneficiario@conectamas.org' },
+          { role: 'beneficiario (sin verificar)', email: 'albergue@conectamas.org' },
         ],
       }
     : undefined;

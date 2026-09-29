@@ -10,25 +10,25 @@ const addDays = (days) => new Date(Date.now() + days * 86400000).toISOString().s
 async function ensureAdmin(store, config) {
   if ([...store.users.values()].some((u) => u.role === 'admin')) return null;
   return createUser(store, {
-    name: 'Administración Comparte',
+    name: 'Administración Conecta +',
     email: config.adminEmail,
     password: config.adminPassword,
     role: 'admin',
-    organization: 'Comparte',
+    organization: 'Conecta +',
     status: 'activo',
   });
 }
 
 /** Datos de demostración para que la plataforma se pueda probar de inmediato. */
 async function seedDemo(store, config) {
-  if (findByEmail(store, 'donador@comparte.org')) return false;
+  if (findByEmail(store, 'donador@conectamas.org')) return false;
   const admin = [...store.users.values()].find((u) => u.role === 'admin');
   const pwd = config.demoPassword;
 
-  const donor = await createUser(store, { name: 'Laura Méndez', email: 'donador@comparte.org', password: pwd, role: 'donador', organization: 'Supermercados La Cosecha' });
-  const donor2 = await createUser(store, { name: 'Carlos Ruiz', email: 'panaderia@comparte.org', password: pwd, role: 'donador', organization: 'Panadería San José' });
-  const org = await createUser(store, { name: 'María Torres', email: 'beneficiario@comparte.org', password: pwd, role: 'beneficiario', organization: 'Comedor Comunitario Esperanza', status: 'activo' });
-  await createUser(store, { name: 'Jorge Salas', email: 'albergue@comparte.org', password: pwd, role: 'beneficiario', organization: 'Albergue Nuevo Amanecer' });
+  const donor = await createUser(store, { name: 'Laura Méndez', email: 'donador@conectamas.org', password: pwd, role: 'donador', organization: 'Supermercados La Cosecha' });
+  const donor2 = await createUser(store, { name: 'Carlos Ruiz', email: 'panaderia@conectamas.org', password: pwd, role: 'donador', organization: 'Panadería San José' });
+  const org = await createUser(store, { name: 'María Torres', email: 'beneficiario@conectamas.org', password: pwd, role: 'beneficiario', organization: 'Comedor Comunitario Esperanza', status: 'activo' });
+  await createUser(store, { name: 'Jorge Salas', email: 'albergue@conectamas.org', password: pwd, role: 'beneficiario', organization: 'Albergue Nuevo Amanecer' });
 
   const arroz = createDonation(store, donor, { title: 'Arroz y frijol', category: 'alimentos', quantity: 120, unit: 'kg', expiresAt: addDays(90), location: 'Monterrey, N.L.', description: 'Costales de 5 kg, empaque cerrado.' });
   createDonation(store, donor, { title: 'Leche UHT', category: 'alimentos', quantity: 60, unit: 'litros', expiresAt: addDays(20), location: 'Monterrey, N.L.', description: 'Cajas de 12 piezas de 1 L.' });

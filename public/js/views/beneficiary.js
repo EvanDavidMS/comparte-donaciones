@@ -89,7 +89,7 @@ export async function dashboard({ user, go }) {
         { class: 'grid-2' },
         h(
           'section',
-          { class: 'card' },
+          { class: 'card', 'data-tour': 'activity' },
           h('h2', {}, 'Tus solicitudes'),
           h('p', { class: 'card-sub' }, `Responsable: ${user.name}`),
           kv([
@@ -113,7 +113,7 @@ export async function dashboard({ user, go }) {
       ),
       h(
         'section',
-        { class: 'section' },
+        { class: 'section', 'data-tour': 'table' },
         h('div', { class: 'section-head' }, h('h2', { class: 'section-title' }, 'Por recoger'), h('a', { class: 'link', href: '#/mis-solicitudes' }, 'Ver todas', icon('arrowRight'))),
         table(requestColumns(draw), toPickUp, empty('Nada pendiente de recoger', 'Cuando un administrador apruebe una solicitud aparecerá aquí.', 'truck')),
       ),
@@ -149,7 +149,7 @@ export async function available({ user }) {
     drawTable();
   });
 
-  const tableBox = h('div', { class: 'section' });
+  const tableBox = h('div', { class: 'section', 'data-tour': 'table' });
   const head = h('div');
 
   async function requestFlow(d) {
@@ -211,7 +211,7 @@ export async function available({ user }) {
     root,
     pending ? pendingNotice() : null,
     head,
-    h('div', { class: 'filters' }, search, category),
+    h('div', { class: 'filters', 'data-tour': 'filters' }, search, category),
     tableBox,
     notice('Importante', 'Las solicitudes son revisadas por el equipo administrador. Si se aprueba, coordina la recolección y confirma la recepción en "Mis solicitudes".'),
   );
@@ -233,7 +233,7 @@ export async function myRequests() {
       }),
       h(
         'div',
-        { class: 'section-head' },
+        { class: 'section-head', 'data-tour': 'filters' },
         chips(
           [
             ['', 'Todas'],
@@ -250,7 +250,7 @@ export async function myRequests() {
           },
         ),
       ),
-      h('div', { class: 'section' }, table(requestColumns(draw), requests, empty('Sin solicitudes', 'Explora el catálogo de donaciones disponibles para hacer tu primera solicitud.', 'clipboard'))),
+      h('div', { class: 'section', 'data-tour': 'table' }, table(requestColumns(draw), requests, empty('Sin solicitudes', 'Explora el catálogo de donaciones disponibles para hacer tu primera solicitud.', 'clipboard'))),
     );
   }
   await draw();

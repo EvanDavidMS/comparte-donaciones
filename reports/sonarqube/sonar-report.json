@@ -1,11 +1,11 @@
 {
   "values": {
     "coverage": "98.4",
-    "complexity": "725",
+    "complexity": "787",
     "reliability_rating": "1.0",
     "code_smells": "0",
     "duplicated_lines_density": "0.0",
-    "functions": "389",
+    "functions": "415",
     "security_rating": "1.0",
     "sqale_debt_ratio": "0.0",
     "comment_lines_density": "2.6",
@@ -14,42 +14,16 @@
     "sqale_rating": "1.0",
     "bugs": "0",
     "branch_coverage": "96.9",
-    "cognitive_complexity": "361",
-    "ncloc": "4049",
-    "files": "31",
+    "cognitive_complexity": "406",
+    "ncloc": "4441",
+    "files": "33",
     "vulnerabilities": "0",
     "line_coverage": "99.1"
   },
   "gate": {
     "status": "OK",
-    "conditions": [
-      {
-        "status": "OK",
-        "metricKey": "new_coverage",
-        "comparator": "LT",
-        "errorThreshold": "80",
-        "actualValue": "100.0"
-      },
-      {
-        "status": "OK",
-        "metricKey": "new_duplicated_lines_density",
-        "comparator": "GT",
-        "errorThreshold": "3",
-        "actualValue": "0.0"
-      },
-      {
-        "status": "OK",
-        "metricKey": "new_violations",
-        "comparator": "GT",
-        "errorThreshold": "0",
-        "actualValue": "0"
-      }
-    ],
+    "conditions": [],
     "ignoredConditions": false,
-    "period": {
-      "mode": "PREVIOUS_VERSION",
-      "date": "2026-09-29T05:28:12+0000"
-    },
     "caycStatus": "compliant"
   },
   "issues": [],

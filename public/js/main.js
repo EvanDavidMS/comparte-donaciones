@@ -4,6 +4,8 @@ import { authView } from './views/auth.js';
 import * as donor from './views/donor.js';
 import * as beneficiary from './views/beneficiary.js';
 import * as admin from './views/admin.js';
+import { startTour, isTourActive, endTour } from './tour.js';
+import { TOURS } from './tours.js';
 
 const app = document.getElementById('app');
 const state = { user: null, shell: null };
@@ -32,7 +34,7 @@ const ROUTES = {
 // ---------- Tema claro / oscuro ----------
 function readTheme() {
   try {
-    const saved = localStorage.getItem('comparte-theme');
+    const saved = localStorage.getItem('conecta-theme');
     if (saved === 'dark' || saved === 'light') return saved;
   } catch {
     /* almacenamiento no disponible */
@@ -52,7 +54,7 @@ export function themeToggle() {
     onclick: () => {
       const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
       try {
-        localStorage.setItem('comparte-theme', next);
+        localStorage.setItem('conecta-theme', next);
       } catch {
         /* sin persistencia */
       }
@@ -76,6 +78,7 @@ async function logout() {
   } catch {
     /* la cookie se elimina igualmente */
   }
+  endTour();
   state.user = null;
   state.shell = null;
   toast('Sesión cerrada');
@@ -102,7 +105,7 @@ function buildShell(user) {
     h(
       'aside',
       { class: 'sidebar' },
-      h('a', { class: 'brand', href: '#/panel' }, h('img', { src: '/img/logo.svg', alt: '' }), h('span', {}, 'Comparte', h('small', {}, 'Red de donaciones'))),
+      h('a', { class: 'brand', href: '#/panel' }, h('img', { src: '/img/logo.svg', alt: '' }), h('span', {}, 'Conecta +', h('small', {}, 'Red de donaciones'))),
       nav,
       h(
         'div',
@@ -119,10 +122,16 @@ function buildShell(user) {
       h(
         'header',
         { class: 'topbar' },
-        h('a', { class: 'mobile-brand', href: '#/panel', 'aria-label': 'Comparte' }, h('img', { src: '/img/logo.svg', alt: '' })),
+        h('a', { class: 'mobile-brand', href: '#/panel', 'aria-label': 'Conecta +' }, h('img', { src: '/img/logo.svg', alt: '' })),
         h('div', { class: 'ticker' }, icon('clock'), ticker),
         h('div', { class: 'spacer' }),
         h('div', { class: 'pill', title: user.email }, h('span', { class: 'name' }, displayName), h('span', { class: 'role-dot' }, ROLE_LABEL[user.role])),
+        h(
+          'button',
+          { type: 'button', class: 'icon-btn tour-btn', 'data-tour': 'help', 'aria-label': 'Ver ruta guiada', title: 'Ver ruta guiada', onclick: () => runTour() },
+          icon('help'),
+          h('span', {}, 'Ruta guiada'),
+        ),
         themeToggle(),
         h('button', { type: 'button', class: 'icon-btn menu-btn', 'aria-label': 'Abrir menú', onclick: () => shell.classList.toggle('nav-open') }, icon('menu')),
       ),
@@ -130,7 +139,7 @@ function buildShell(user) {
       h(
         'footer',
         { class: 'footer' },
-        h('span', {}, `© ${new Date().getFullYear()} Comparte | Todos los derechos reservados`),
+        h('span', {}, `© ${new Date().getFullYear()} Conecta + | Todos los derechos reservados`),
         h('div', { class: 'checks' }, h('span', {}, icon('check'), 'Sesión protegida con JWT'), h('span', {}, icon('check'), 'Datos en servidor propio')),
       ),
     ),
@@ -176,13 +185,15 @@ async function render() {
   shell.el.classList.remove('nav-open');
   shell.nav.querySelectorAll('a').forEach((a) => a.toggleAttribute('aria-current', a.dataset.path === route.path));
   shell.nav.querySelector(`a[data-path="${route.path}"]`).setAttribute('aria-current', 'page');
-  document.title = `${route.label} · Comparte`;
+  document.title = `${route.label} · Conecta +`;
 
+  delete shell.content.dataset.route;
   clear(shell.content, h('div', { class: 'loading' }, 'Cargando…'));
   const ctx = { user: state.user, go, refreshChrome };
   try {
     const view = await route.view(ctx);
     clear(shell.content, view);
+    shell.content.dataset.route = route.path;
   } catch (err) {
     if (err.status === 401) return;
     clear(
@@ -190,8 +201,35 @@ async function render() {
       h('div', { class: 'card' }, empty('No se pudo cargar esta sección', err.message, 'alert'), h('div', { class: 'empty' }, h('button', { class: 'btn btn-outline', onclick: render }, 'Reintentar'))),
     );
   }
-  window.scrollTo(0, 0);
+  if (!isTourActive()) window.scrollTo(0, 0);
   refreshChrome();
+  maybeAutoTour();
+}
+
+// ---------- Ruta guiada ----------
+const tourKey = (user) => `conecta-tour-${user.id}`;
+function tourSeen(user) {
+  try {
+    return localStorage.getItem(tourKey(user)) === 'visto';
+  } catch {
+    return true; // sin almacenamiento no se fuerza el recorrido en cada visita
+  }
+}
+function markTourSeen(user) {
+  try {
+    localStorage.setItem(tourKey(user), 'visto');
+  } catch {
+    /* sin persistencia */
+  }
+}
+function runTour() {
+  const user = state.user;
+  if (!user) return;
+  startTour(TOURS[user.role], { go, currentPath, onFinish: () => markTourSeen(user) });
+}
+/** La primera vez que un usuario entra, la ruta guiada arranca sola desde su panel. */
+function maybeAutoTour() {
+  if (state.user && !isTourActive() && currentPath() === 'panel' && !tourSeen(state.user)) runTour();
 }
 
 function onLogin(user) {
@@ -203,6 +241,7 @@ function onLogin(user) {
 
 setUnauthorizedHandler(() => {
   if (!state.user) return;
+  endTour();
   state.user = null;
   state.shell = null;
   toast('Tu sesión expiró. Inicia sesión de nuevo.', 'error');

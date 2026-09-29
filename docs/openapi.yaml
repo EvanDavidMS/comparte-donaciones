@@ -1,11 +1,11 @@
 openapi: 3.0.3
 info:
-  title: Comparte API
+  title: Conecta + API
   version: 1.0.0
   description: >
-    API REST de Comparte, plataforma de donaciones de alimentos y recursos entre
+    API REST de Conecta +, plataforma de donaciones de alimentos y recursos entre
     donadores (empresas o particulares) y organizaciones sociales beneficiarias.
-    Autenticación mediante JWT (cabecera Bearer o cookie httpOnly `comparte_token`).
+    Autenticación mediante JWT (cabecera Bearer o cookie httpOnly `conecta_token`).
 servers:
   - url: http://localhost:3000
 tags:
@@ -139,7 +139,7 @@ paths:
               type: object
               required: [email, password]
               properties:
-                email: { type: string, example: donador@comparte.org }
+                email: { type: string, example: donador@conectamas.org }
                 password: { type: string, example: Demo12345 }
       responses:
         '200': { description: Sesión iniciada, content: { application/json: { schema: { $ref: '#/components/schemas/Session' } } } }

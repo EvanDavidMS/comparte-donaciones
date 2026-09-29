@@ -16,7 +16,7 @@ describe('Configuración', () => {
     const b = loadConfig({});
     expect(a.jwtSecret).toHaveLength(96);
     expect(a.jwtSecret).not.toBe(b.jwtSecret);
-    expect(a).toMatchObject({ port: 3000, seedDemo: true, cookieSecure: false, dataFile: 'data/db.json', adminEmail: 'admin@comparte.org' });
+    expect(a).toMatchObject({ port: 3000, seedDemo: true, cookieSecure: false, dataFile: 'data/db.json', adminEmail: 'admin@conectamas.org' });
   });
 
   test('sin credenciales en el entorno genera contraseñas aleatorias válidas', () => {
@@ -50,7 +50,7 @@ describe('Configuración', () => {
 describe('Almacenamiento en servidor', () => {
   let dir;
   beforeEach(() => {
-    dir = fs.mkdtempSync(path.join(os.tmpdir(), 'comparte-'));
+    dir = fs.mkdtempSync(path.join(os.tmpdir(), 'conecta-'));
   });
   afterEach(() => fs.rmSync(dir, { recursive: true, force: true }));
 

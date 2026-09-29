@@ -37,6 +37,8 @@ const ICONS = {
   book: ['M4 19.5A2.5 2.5 0 0 1 6.5 17H20', 'M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z'],
   sofa: ['M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3', 'M2 11v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H6v-2a2 2 0 0 0-4 0z', 'M4 18v2', 'M20 18v2'],
   inbox: ['M22 12h-6l-2 3h-4l-2-3H2', 'M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z'],
+  compass: ['M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20z', 'm16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36z'],
+  help: ['M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20z', 'M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3', 'M12 17h.01'],
   lock: ['M5 11h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2z', 'M7 11V7a5 5 0 0 1 10 0v4'],
 };
 
@@ -150,7 +152,7 @@ export function pageHead(title, subtitle, highlight) {
     { class: 'page-head' },
     h('div', {}, h('h1', {}, title), h('p', { class: 'subtitle' }, icon('clock'), subtitle)),
     highlight
-      ? h('div', { class: 'highlight' }, icon(highlight.icon || 'heart'), h('strong', {}, highlight.value), h('span', {}, highlight.label))
+      ? h('div', { class: 'highlight', 'data-tour': 'highlight' }, icon(highlight.icon || 'heart'), h('strong', {}, highlight.value), h('span', {}, highlight.label))
       : null,
   );
 }
@@ -158,7 +160,7 @@ export function pageHead(title, subtitle, highlight) {
 export function metrics(items) {
   return h(
     'section',
-    { class: 'metrics', 'aria-label': 'Métricas' },
+    { class: 'metrics', 'data-tour': 'metrics', 'aria-label': 'Métricas' },
     items.map((m, i) =>
       h(
         'div',

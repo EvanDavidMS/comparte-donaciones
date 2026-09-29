@@ -1,6 +1,6 @@
 # Reporte de calidad — SonarQube
 
-Proyecto: `comparte-donaciones` · Fecha: 2026-09-29T05:50:17.169Z
+Proyecto: `conecta-mas-donaciones` · Fecha: 2026-09-29T06:10:44.580Z
 
 **Quality Gate: APROBADO ✅**
 
@@ -8,9 +8,9 @@ Proyecto: `comparte-donaciones` · Fecha: 2026-09-29T05:50:17.169Z
 
 | Métrica | Valor |
 |---|---|
-| Líneas de código | 4049 |
-| Archivos | 31 |
-| Funciones | 389 |
+| Líneas de código | 4441 |
+| Archivos | 33 |
+| Funciones | 415 |
 | Bugs | 0 |
 | Vulnerabilidades | 0 |
 | Security hotspots | 0 |
@@ -24,8 +24,8 @@ Proyecto: `comparte-donaciones` · Fecha: 2026-09-29T05:50:17.169Z
 | Cobertura de líneas (%) | 99.1 |
 | Cobertura de ramas (%) | 96.9 |
 | Duplicación (%) | 0.0 |
-| Complejidad ciclomática | 725 |
-| Complejidad cognitiva | 361 |
+| Complejidad ciclomática | 787 |
+| Complejidad cognitiva | 406 |
 | Comentarios (%) | 2.6 |
 | Deuda técnica (legible) | 0 h 0 min |
 
@@ -33,9 +33,6 @@ Proyecto: `comparte-donaciones` · Fecha: 2026-09-29T05:50:17.169Z
 
 | Métrica | Estado | Valor | Umbral |
 |---|---|---|---|
-| new_coverage | OK | 100.0 | LT 80 |
-| new_duplicated_lines_density | OK | 0.0 | GT 3 |
-| new_violations | OK | 0 | GT 0 |
 
 ## Incidencias abiertas (0)
 

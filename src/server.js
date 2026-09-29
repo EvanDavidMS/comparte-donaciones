@@ -16,7 +16,7 @@ async function main() {
 
   const app = createApp({ store, config });
   const server = app.listen(config.port, () => {
-    console.log(`Comparte escuchando en http://localhost:${config.port} (${config.nodeEnv})`);
+    console.log(`Conecta + escuchando en http://localhost:${config.port} (${config.nodeEnv})`);
     console.log(loaded ? `Datos cargados desde ${config.dataFile}` : 'Almacenamiento inicializado');
     if (config.generatedCredentials && !loaded) {
       // Solo se muestran credenciales generadas al vuelo (no hay secretos fijos en el código).

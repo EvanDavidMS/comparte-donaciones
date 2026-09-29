@@ -159,21 +159,21 @@ describe('Sesión y token JWT', () => {
   });
 
   test('rechaza tokens sin firma (alg=none)', async () => {
-    const unsigned = jwt.sign({ sub: user.id, role: 'admin', tv: 0 }, null, { algorithm: 'none', issuer: 'comparte-api', audience: 'comparte-web' });
+    const unsigned = jwt.sign({ sub: user.id, role: 'admin', tv: 0 }, null, { algorithm: 'none', issuer: 'conecta-api', audience: 'conecta-web' });
     const res = await request(app).get('/api/auth/me').set(auth(unsigned));
     expect(res.status).toBe(401);
   });
 
   test('rechaza tokens firmados con otro secreto', async () => {
-    const forged = jwt.sign({ sub: user.id, role: 'donador', tv: 0 }, 'otro-secreto-de-al-menos-32-caracteres!!', { issuer: 'comparte-api', audience: 'comparte-web' });
+    const forged = jwt.sign({ sub: user.id, role: 'donador', tv: 0 }, 'otro-secreto-de-al-menos-32-caracteres!!', { issuer: 'conecta-api', audience: 'conecta-web' });
     const res = await request(app).get('/api/auth/me').set(auth(forged));
     expect(res.status).toBe(401);
   });
 
   test('rechaza tokens expirados', async () => {
     const expired = jwt.sign({ sub: user.id, role: 'donador', tv: 0, exp: Math.floor(Date.now() / 1000) - 10 }, config.jwtSecret, {
-      issuer: 'comparte-api',
-      audience: 'comparte-web',
+      issuer: 'conecta-api',
+      audience: 'conecta-web',
     });
     const res = await request(app).get('/api/auth/me').set(auth(expired));
     expect(res.status).toBe(401);

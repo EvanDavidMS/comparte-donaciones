@@ -1,53 +1,53 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.17.0",
-	"@generated": "Tue, 29 Sept 2026 05:38:02",
-	"created": "2026-09-29T05:38:02.658028117Z",
+	"@generated": "Tue, 29 Sept 2026 06:12:12",
+	"created": "2026-09-29T06:12:12.770105886Z",
 	"insights":[
 		{
 			"level": "Info",
 			"reason": "Informational",
-			"site": "http://host.docker.internal:3000",
+			"site": "http://host.docker.internal:3100",
 			"key": "insight.code.2xx",
 			"description": "Percentage of responses with status code 2xx",
-			"statistic": "60"
+			"statistic": "66"
 		},
 		{
 			"level": "Info",
 			"reason": "Informational",
-			"site": "http://host.docker.internal:3000",
+			"site": "http://host.docker.internal:3100",
 			"key": "insight.code.3xx",
 			"description": "Percentage of responses with status code 3xx",
-			"statistic": "25"
-		},
-		{
-			"level": "Info",
-			"reason": "Informational",
-			"site": "http://host.docker.internal:3000",
-			"key": "insight.code.4xx",
-			"description": "Percentage of responses with status code 4xx",
-			"statistic": "13"
-		},
-		{
-			"level": "Info",
-			"reason": "Informational",
-			"site": "http://host.docker.internal:3000",
-			"key": "insight.endpoint.ctype.application/javascript",
-			"description": "Percentage of endpoints with content type application/javascript",
-			"statistic": "44"
-		},
-		{
-			"level": "Info",
-			"reason": "Informational",
-			"site": "http://host.docker.internal:3000",
-			"key": "insight.endpoint.ctype.application/json",
-			"description": "Percentage of endpoints with content type application/json",
 			"statistic": "22"
 		},
 		{
 			"level": "Info",
 			"reason": "Informational",
-			"site": "http://host.docker.internal:3000",
+			"site": "http://host.docker.internal:3100",
+			"key": "insight.code.4xx",
+			"description": "Percentage of responses with status code 4xx",
+			"statistic": "10"
+		},
+		{
+			"level": "Info",
+			"reason": "Informational",
+			"site": "http://host.docker.internal:3100",
+			"key": "insight.endpoint.ctype.application/javascript",
+			"description": "Percentage of endpoints with content type application/javascript",
+			"statistic": "47"
+		},
+		{
+			"level": "Info",
+			"reason": "Informational",
+			"site": "http://host.docker.internal:3100",
+			"key": "insight.endpoint.ctype.application/json",
+			"description": "Percentage of endpoints with content type application/json",
+			"statistic": "21"
+		},
+		{
+			"level": "Info",
+			"reason": "Informational",
+			"site": "http://host.docker.internal:3100",
 			"key": "insight.endpoint.ctype.font/woff2",
 			"description": "Percentage of endpoints with content type font/woff2",
 			"statistic": "5"
@@ -55,7 +55,7 @@
 		{
 			"level": "Info",
 			"reason": "Informational",
-			"site": "http://host.docker.internal:3000",
+			"site": "http://host.docker.internal:3100",
 			"key": "insight.endpoint.ctype.image/svg+xml",
 			"description": "Percentage of endpoints with content type image/svg+xml",
 			"statistic": "5"
@@ -63,7 +63,7 @@
 		{
 			"level": "Info",
 			"reason": "Informational",
-			"site": "http://host.docker.internal:3000",
+			"site": "http://host.docker.internal:3100",
 			"key": "insight.endpoint.ctype.text/css",
 			"description": "Percentage of endpoints with content type text/css",
 			"statistic": "5"
@@ -71,41 +71,41 @@
 		{
 			"level": "Info",
 			"reason": "Informational",
-			"site": "http://host.docker.internal:3000",
+			"site": "http://host.docker.internal:3100",
 			"key": "insight.endpoint.ctype.text/html",
 			"description": "Percentage of endpoints with content type text/html",
-			"statistic": "16"
+			"statistic": "15"
 		},
 		{
 			"level": "Info",
 			"reason": "Informational",
-			"site": "http://host.docker.internal:3000",
+			"site": "http://host.docker.internal:3100",
 			"key": "insight.endpoint.method.GET",
 			"description": "Percentage of endpoints with method GET",
-			"statistic": "88"
+			"statistic": "89"
 		},
 		{
 			"level": "Info",
 			"reason": "Informational",
-			"site": "http://host.docker.internal:3000",
+			"site": "http://host.docker.internal:3100",
 			"key": "insight.endpoint.method.POST",
 			"description": "Percentage of endpoints with method POST",
-			"statistic": "11"
+			"statistic": "10"
 		},
 		{
 			"level": "Info",
 			"reason": "Informational",
-			"site": "http://host.docker.internal:3000",
+			"site": "http://host.docker.internal:3100",
 			"key": "insight.endpoint.total",
 			"description": "Count of total endpoints",
-			"statistic": "18"
+			"statistic": "19"
 		}
 	],
 	"site":[ 
 		{
-			"@name": "http://host.docker.internal:3000",
+			"@name": "http://host.docker.internal:3100",
 			"@host": "host.docker.internal",
-			"@port": "3000",
+			"@port": "3100",
 			"@ssl": "false",
 			"alerts": [ 
 				{
@@ -119,24 +119,24 @@
 					"desc": "<p>Information was stored in browser localStorage.</p><p>This is not unusual or necessarily unsafe - this informational alert has been raised to help you get a better understanding of what this app is doing. For more details see the Client tabs - this information was set directly in the browser and will therefore not necessarily appear in this form in any HTTP(S) messages.</p>",
 					"instances":[ 
 						{
-							"id": "18",
-							"uri": "http://host.docker.internal:3000/",
-							"nodeName": "http:\/\/host.docker.internal:3000\/",
+							"id": "21",
+							"uri": "http://host.docker.internal:3100/",
+							"nodeName": "http:\/\/host.docker.internal:3100\/",
 							"method": "GET",
-							"param": "comparte-theme",
+							"param": "conecta-theme",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "The following data (key=value) was set: comparte-theme=dark\nNote that this alert will only be raised once for each URL + key."
+							"otherinfo": "The following data (key=value) was set: conecta-theme=dark\nNote that this alert will only be raised once for each URL + key."
 						}
 					],
 					"count": "1",
 					"systemic": false,
 					"solution": "<p>This is an informational alert and no action is necessary. </p>",
-					"otherinfo": "<p>The following data (key=value) was set: comparte-theme=dark</p><p>Note that this alert will only be raised once for each URL + key.</p>",
+					"otherinfo": "<p>The following data (key=value) was set: conecta-theme=dark</p><p>Note that this alert will only be raised once for each URL + key.</p>",
 					"reference": "",
 					"cweid": "359",
 					"wascid": "13",
-					"sourceid": "71"
+					"sourceid": "75"
 				},
 				{
 					"pluginid": "10109",
@@ -149,9 +149,9 @@
 					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Client Spider may well be more effective than the standard one.</p>",
 					"instances":[ 
 						{
-							"id": "0",
-							"uri": "http://host.docker.internal:3000",
-							"nodeName": "http:\/\/host.docker.internal:3000",
+							"id": "2",
+							"uri": "http://host.docker.internal:3100",
+							"nodeName": "http:\/\/host.docker.internal:3100",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -159,9 +159,9 @@
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "14",
-							"uri": "http://host.docker.internal:3000/",
-							"nodeName": "http:\/\/host.docker.internal:3000\/",
+							"id": "12",
+							"uri": "http://host.docker.internal:3100/",
+							"nodeName": "http:\/\/host.docker.internal:3100\/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -176,7 +176,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10049",
@@ -190,8 +190,18 @@
 					"instances":[ 
 						{
 							"id": "15",
-							"uri": "http://host.docker.internal:3000/api/auth/me",
-							"nodeName": "http:\/\/host.docker.internal:3000\/api\/auth\/me",
+							"uri": "http://host.docker.internal:3100/api/auth/me",
+							"nodeName": "http:\/\/host.docker.internal:3100\/api\/auth\/me",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-store",
+							"otherinfo": ""
+						},
+						{
+							"id": "16",
+							"uri": "http://host.docker.internal:3100/api/stats/public",
+							"nodeName": "http:\/\/host.docker.internal:3100\/api\/stats\/public",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -199,14 +209,14 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "1",
+					"count": "2",
 					"systemic": false,
 					"solution": "<p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" are currently defined as cacheable)</p><p>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</p><p>The \"no-store\" cache directive must not appear in the request or response header fields</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"private\" response directive must not appear in the response</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"Authorization\" header field must not appear in the request, unless the response explicitly allows it (using one of the \"must-revalidate\", \"public\", or \"s-maxage\" Cache-Control response directives)</p><p>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</p><p>It must contain an \"Expires\" header field</p><p>It must contain a \"max-age\" response directive</p><p>For \"shared\" caches such as \"proxy\" caches, it must contain a \"s-maxage\" response directive</p><p>It must contain a \"Cache Control Extension\" that allows it to be cached</p><p>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).</p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "33"
+					"sourceid": "34"
 				},
 				{
 					"pluginid": "10049",
@@ -219,9 +229,9 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "13",
-							"uri": "http://host.docker.internal:3000/fonts/inter-latin-wght-normal.woff2",
-							"nodeName": "http:\/\/host.docker.internal:3000\/fonts\/inter-latin-wght-normal.woff2",
+							"id": "11",
+							"uri": "http://host.docker.internal:3100/fonts/inter-latin-wght-normal.woff2",
+							"nodeName": "http:\/\/host.docker.internal:3100\/fonts\/inter-latin-wght-normal.woff2",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -236,7 +246,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "31"
+					"sourceid": "32"
 				},
 				{
 					"pluginid": "10049",
@@ -250,8 +260,8 @@
 					"instances":[ 
 						{
 							"id": "9",
-							"uri": "http://host.docker.internal:3000",
-							"nodeName": "http:\/\/host.docker.internal:3000",
+							"uri": "http://host.docker.internal:3100/",
+							"nodeName": "http:\/\/host.docker.internal:3100\/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -260,18 +270,8 @@
 						},
 						{
 							"id": "6",
-							"uri": "http://host.docker.internal:3000/",
-							"nodeName": "http:\/\/host.docker.internal:3000\/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "no-cache",
-							"otherinfo": ""
-						},
-						{
-							"id": "4",
-							"uri": "http://host.docker.internal:3000/css/styles.css",
-							"nodeName": "http:\/\/host.docker.internal:3000\/css\/styles.css",
+							"uri": "http://host.docker.internal:3100/css/styles.css",
+							"nodeName": "http:\/\/host.docker.internal:3100\/css\/styles.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -280,8 +280,8 @@
 						},
 						{
 							"id": "3",
-							"uri": "http://host.docker.internal:3000/img/logo.svg",
-							"nodeName": "http:\/\/host.docker.internal:3000\/img\/logo.svg",
+							"uri": "http://host.docker.internal:3100/img/logo.svg",
+							"nodeName": "http:\/\/host.docker.internal:3100\/img\/logo.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -289,9 +289,19 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "8",
-							"uri": "http://host.docker.internal:3000/robots.txt",
-							"nodeName": "http:\/\/host.docker.internal:3000\/robots.txt",
+							"id": "4",
+							"uri": "http://host.docker.internal:3100/robots.txt",
+							"nodeName": "http:\/\/host.docker.internal:3100\/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"id": "5",
+							"uri": "http://host.docker.internal:3100/sitemap.xml",
+							"nodeName": "http:\/\/host.docker.internal:3100\/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -306,7 +316,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "15"
 				}
 			]
 		}

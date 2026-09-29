@@ -1,4 +1,4 @@
-# Comparte · Plataforma de gestión de donaciones
+# Conecta + · Plataforma de gestión de donaciones
 
 Sistema web para gestionar donaciones de alimentos y recursos entre **empresas o personas donadoras** y **organizaciones sociales beneficiarias**, con un **equipo administrador** que verifica organizaciones y asigna las donaciones.
 
@@ -15,6 +15,16 @@ Sistema web para gestionar donaciones de alimentos y recursos entre **empresas o
 | **Donador** | Publicar donaciones (con caducidad obligatoria para alimentos), ver su estado, cancelar las disponibles, ver su impacto (kg entregados, organizaciones apoyadas). |
 | **Beneficiario** | Registrarse como organización (queda *pendiente* hasta ser verificada), explorar/buscar donaciones disponibles, solicitarlas, cancelar solicitudes pendientes y confirmar la recepción. |
 | **Administrador** | Verificar, suspender o reactivar cuentas; aprobar, rechazar o revocar solicitudes; registrar entregas; cancelar donaciones; ver métricas globales y el registro de auditoría. No se puede crear desde el registro público. |
+
+### Ruta guiada
+
+Cada rol tiene una **ruta guiada** que recorre sus paneles, resalta cada elemento y explica para qué sirve. Arranca sola la primera vez que el usuario entra y se puede repetir con el botón **Ruta guiada** de la barra superior. Funciona en escritorio y móvil y se maneja con el teclado (← → para avanzar o retroceder, Esc para salir).
+
+| Rol | Paneles que recorre |
+|---|---|
+| Donador (10 pasos) | Panel (impacto, actividad, métricas) → Donar (formulario y ciclo de la donación) → Mis donaciones (filtros y seguimiento) |
+| Beneficiario (10 pasos) | Panel (lo recibido, solicitudes, métricas, por recoger) → Donaciones disponibles (búsqueda y solicitud) → Mis solicitudes (filtros, cancelar y confirmar recepción) |
+| Administrador (11 pasos) | Panel (pendientes, usuarios, métricas, gráficas) → Solicitudes → Donaciones → Usuarios → Auditoría |
 
 ### Flujo de una donación
 
@@ -38,19 +48,19 @@ npm start            # http://localhost:3000
 
 | Cuenta | Correo | Contraseña |
 |---|---|---|
-| Administrador | `admin@comparte.org` | `Admin12345` |
-| Donador | `donador@comparte.org` | `Demo12345` |
-| Beneficiario (verificado) | `beneficiario@comparte.org` | `Demo12345` |
-| Beneficiario (sin verificar) | `albergue@comparte.org` | `Demo12345` |
+| Administrador | `admin@conectamas.org` | `Admin12345` |
+| Donador | `donador@conectamas.org` | `Demo12345` |
+| Beneficiario (verificado) | `beneficiario@conectamas.org` | `Demo12345` |
+| Beneficiario (sin verificar) | `albergue@conectamas.org` | `Demo12345` |
 
 Los datos se guardan en `data/db.json` (se crea automáticamente, está en `.gitignore`). Variables de entorno en [`.env.example`](.env.example). En producción (`NODE_ENV=production`) son obligatorias `JWT_SECRET` (≥ 32 caracteres) y `ADMIN_PASSWORD`, y la demo se desactiva.
 
 ### Con Docker
 
 ```bash
-docker build -t comparte .
+docker build -t conecta .
 docker run -p 3000:3000 -e NODE_ENV=production -e JWT_SECRET=<secreto-largo> \
-  -e ADMIN_PASSWORD=<contraseña> -v comparte-data:/app/data comparte
+  -e ADMIN_PASSWORD=<contraseña> -v conecta-data:/app/data conecta
 ```
 
 ## Scripts
@@ -97,13 +107,13 @@ reports/        Reportes generados: pruebas, SonarQube y OWASP ZAP
 
 ## Capturas
 
-| Donador | Administrador (móvil) |
-|---|---|
-| ![Panel del donador](docs/capturas/desk-donador-panel.png) | ![Solicitudes en móvil](docs/capturas/mob-admin-solicitudes.png) |
+| Donador | Ruta guiada | Administrador (móvil) |
+|---|---|---|
+| ![Panel del donador](docs/capturas/desk-donador-panel.png) | ![Ruta guiada](docs/capturas/ruta-guiada-donador.png) | ![Solicitudes en móvil](docs/capturas/mob-admin-solicitudes.png) |
 
 ## Documentación
 
 - [Seguridad: controles, OWASP ZAP y SonarQube](docs/SEGURIDAD.md)
 - [Especificación OpenAPI](docs/openapi.yaml)
-- [Informe de cierre (Word)](docs/Informe_de_Cierre_Comparte.docx)
+- [Informe de cierre (Word)](docs/Informe_de_Cierre_Conecta_Mas.docx)
 - [Reportes generados](reports/README.md)

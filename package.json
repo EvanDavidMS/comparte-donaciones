@@ -1,7 +1,7 @@
 {
-  "name": "comparte-donaciones",
+  "name": "conecta-mas-donaciones",
   "version": "1.0.0",
-  "description": "Comparte: plataforma para gestionar donaciones de alimentos y recursos entre empresas (donantes) y organizaciones sociales (beneficiarias).",
+  "description": "Conecta +: plataforma para gestionar donaciones de alimentos y recursos entre empresas (donantes) y organizaciones sociales (beneficiarias).",
   "main": "src/server.js",
   "private": true,
   "scripts": {

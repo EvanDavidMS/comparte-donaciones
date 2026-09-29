@@ -3,9 +3,9 @@
 const jwt = require('jsonwebtoken');
 const { AppError } = require('../utils/errors');
 
-const COOKIE_NAME = 'comparte_token';
-const ISSUER = 'comparte-api';
-const AUDIENCE = 'comparte-web';
+const COOKIE_NAME = 'conecta_token';
+const ISSUER = 'conecta-api';
+const AUDIENCE = 'conecta-web';
 
 function signToken(user, config) {
   return jwt.sign({ sub: user.id, role: user.role, tv: user.tokenVersion }, config.jwtSecret, {
