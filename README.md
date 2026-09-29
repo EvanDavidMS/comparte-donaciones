@@ -116,4 +116,5 @@ reports/        Reportes generados: pruebas, SonarQube y OWASP ZAP
 - [Seguridad: controles, OWASP ZAP y SonarQube](docs/SEGURIDAD.md)
 - [Especificación OpenAPI](docs/openapi.yaml)
 - [Informe de cierre (Word)](docs/Informe_de_Cierre_Conecta_Mas.docx)
+- [Presentación (HTML, se abre en el navegador)](docs/Presentacion_Conecta_Mas.html) · [PDF](docs/Presentacion_Conecta_Mas.pdf)
 - [Reportes generados](reports/README.md)
