@@ -1,5 +1,8 @@
 # Conecta + · Plataforma de gestión de donaciones
 
+> **Proyecto final de la materia Ingeniería de Software**
+> Alumno: Evan David Morales Serrano · Matrícula: AL03086130 · Profesor: Santos Guadalupe Facio Barraza
+
 Sistema web para gestionar donaciones de alimentos y recursos entre **empresas o personas donadoras** y **organizaciones sociales beneficiarias**, con un **equipo administrador** que verifica organizaciones y asigna las donaciones.
 
 - **Backend:** Node.js 20 + Express, autenticación **JWT** con roles.
